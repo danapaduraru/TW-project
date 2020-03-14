@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Home | Planty</title>
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../style/global.css">
 </head>
 
@@ -43,6 +44,51 @@
                 </div>
                 <img src="images/home-gray-paragraph.jpg">
             </div>
+        </div>
+
+        <div id="div-searchbar">
+            <h2> Discover new plants and fungi </h2>
+            <form action="">
+                <input type="text" placeholder="Search for plants... ">
+                <button type="submit" class="btn-search">
+                    <i class="fa fa-search"></i>
+                </button>
+
+                <div class="checkboxes">
+                    <div style="text-align: left;">
+                        <input type="checkbox" id="class" value="class">
+                        <label for="class">Class</label><br>
+                    </div>
+                    <div style="text-align: left;">
+                        <input type="checkbox" id="order" value="order">
+                        <label for="order">Order</label>
+                    </div>
+                    <div style="text-align: left;">
+                        <input type="checkbox" id="genus" value="genus">
+                        <label for="genus">Genus</label>
+                    </div>
+                    <div style="text-align: left;">
+                        <input type="checkbox" id="collection" value="collection">
+                        <label for="collection">Collection</label><br>
+                    </div>
+                    <div style="text-align: left;">
+                        <input type="checkbox" id="subclass" value="subclass">
+                        <label for="subclass">Subclass</label>
+                    </div>
+                    <div style="text-align: left;">
+                        <input type="checkbox" id="family" value="family">
+                        <label for="family">Family</label>
+                    </div>
+                    <div style="text-align: left;">
+                        <input type="checkbox" id="species" value="species">
+                        <label for="species">Species</label>
+                    </div>
+                    <div style="text-align: left;">
+                        <input type="checkbox" id="id" value="id">
+                        <label for="id">ID</label>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
