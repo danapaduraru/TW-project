@@ -1,0 +1,82 @@
+:root {
+    --white: #fff;
+    --light-gray: #f6f8fa;
+    --black: #24292e;
+    --link-hover: #10e9bd;
+    --accent: #19af92;
+    /* --dark-accent: #008080;
+    --important: #148972; */
+  }
+
+body {    
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: "Lato", sans-serif;
+    transition: background-color .5s;
+    font-size: 100%;
+    overflow-x: hidden;
+}
+
+/********************
+LINKS
+*********************/
+
+a {
+    font-size: 140%;
+    text-decoration: none;
+    color: var(--white);
+}
+
+a:hover {
+    color: var(--link-hover);
+}
+
+/********************
+SIDEBAR
+*********************/
+
+#sidenav {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    background-color: var(--black);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 5%;
+}
+
+#sidenav a {
+    display: block;
+    padding: 8px 8px 8px 32px;
+}
+
+#nav-open-btn {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#nav-close-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/********************
+MAIN CONTAINER (whole page without sidebar)
+*********************/
+
+#main-container {
+    transition: margin-left .5s;
+}
+
+/* de pe w3 school de la sidebar: */
+/* @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}   */
