@@ -1,6 +1,7 @@
 :root {
     --white: #fff;
     --light-gray: #f6f8fa;
+    --gray:rgb(73, 73, 73);
     --black: #24292e;
     --link-hover: #10e9bd;
     --light-accent: #19af92;
@@ -33,6 +34,42 @@ a {
 
 a:hover {
     color: var(--light-accent);
+}
+
+/********************
+BUTTONS
+*********************/
+
+.btn {
+    width: 100px;
+    padding: 8px;
+    margin: 5px;
+    border: none;
+    font-size: 100%;
+    font-weight: 400;
+    font-family: "Lato", sans-serif;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background-color: var(--dark-text);
+    color: var(--white);
+}
+
+.btn-secondary:hover {
+    background-color: var(--gray);
+}
+
+.btn-primary {
+    background-color: var(--light-accent);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--dark-accent2);
 }
 
 /********************
@@ -145,7 +182,7 @@ Welcome Paragraph + Pic
 }
 
 .gray-paragraph-with-pic img {
-    max-width: 50%;
+    max-width: 40%;
 }
 
 /********************
