@@ -9,23 +9,44 @@
 </head>
 
 <body>
-    <header>
-    </header>
 
     <aside id="sidenav">
         <a href="javascript:void(0)" id="nav-close-btn" onclick="closeNav()">&times;</a>
         <a href="#">Home</a>
         <a href="#">Top Plants</a>
         <a href="#">Statistics</a>
-      </aside>
-      
-      <div id="main-container">
-        <span id="nav-open-btn" onclick="openNav()">&#9776; </span>
-        <span id="menu-span"> Menu </span>
-        <h2>Planty - Title and Logo </h2>
-      </div>
-      
-      <script src='../js/index.js'> </script>
+    </aside>
+
+    <div id="main-container">
+        <header>
+            <div id="menu-title-sidebar" onclick="openNav()">
+                <span style="font-size: 30px;">&#9776; </span>
+                <span id="menu-span"> Menu </span>
+            </div>
+            <div id="title-logo">
+                <h1>Planty</h1>
+                <h3>love for plants</h3>
+            </div>
+        </header>
+
+        <div class="gray-section">
+            <div class="gray-paragraph-with-pic">
+                <div>
+                    <h3> Welcome to Planty, an interesting place to discover new plants and fungi.
+                    </h3>
+                    <h3> Here you can: </h3>
+                    <ul>
+                        <li> keep track of your plant collections </li>
+                        <li> search for plants using multiple filters </li>
+                        <li> see top plants and statistics </li>
+                    </ul>
+                </div>
+                <img src="images/home-gray-paragraph.jpg">
+            </div>
+        </div>
+    </div>
+
+    <script src='../js/index.js'> </script>
 
 </body>
 
