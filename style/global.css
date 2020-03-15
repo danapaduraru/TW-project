@@ -1,16 +1,20 @@
+/*
+unused colors:
+    --link-hover: #10e9bd;
+    --important: #148972;
+*/
+
 :root {
     --white: #fff;
     --light-gray: #f6f8fa;
     --gray:rgb(73, 73, 73);
     --black: #24292e;
-    --link-hover: #10e9bd;
     --light-accent: #19af92;
-    --divider: #ddeeeb;
+    --mid-accent: #008080;
     --dark-accent: #006652;
-    --dark-accent2: #008080;
-    --important: #148972;
+    --divider: #ddeeeb;
     --dark-text: rgb(53, 53, 53);
-  }
+}
 
 body {    
     height: 100%;
@@ -41,6 +45,7 @@ BUTTONS
 *********************/
 
 .btn {
+    text-align: center;
     width: 100px;
     padding: 8px;
     margin: 5px;
@@ -52,6 +57,11 @@ BUTTONS
 
 .btn:hover {
     cursor: pointer;
+    color: var(--white);
+}
+
+.btn:active {
+    transform: translateX(1px);
 }
 
 .btn-secondary {
@@ -69,7 +79,7 @@ BUTTONS
 }
 
 .btn-primary:hover {
-    background-color: var(--dark-accent2);
+    background-color: var(--mid-accent);
 }
 
 /********************
