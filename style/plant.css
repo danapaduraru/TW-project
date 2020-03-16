@@ -1,0 +1,70 @@
+/********************
+Create gray background
+*********************/
+
+html {
+    background-color: var(--light-gray);
+}
+
+header {
+    background-color: var(--white);
+}
+
+.gray-section {
+    text-align: center;
+    border-bottom: 0;
+}
+
+/********************
+Card (picture + info)
+*********************/
+
+.card {
+    width: 60%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/********************
+Card Information (table + button)
+*********************/
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-info .btn {
+    width: 60%;
+    margin: 0;
+    margin-top: 3em;
+}
+
+/********************
+Card Picture
+*********************/
+
+.card img {
+    max-height: 600px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+/********************
+Table updated CSS
+Other CSS is inherited from top-plants.css
+*********************/
+table {
+    font-size: 110%;
+}
+
+th {
+    font-size: 100%;
+}
+
+tr {
+    font-weight: 600;
+}
