@@ -1,3 +1,7 @@
+/********************
+Create gray background
+*********************/
+
 html {
     background-color: var(--light-gray);
 }
@@ -15,6 +19,9 @@ header {
     margin-bottom: 2em;
 }
 
+/********************
+ALBUM
+*********************/
 .album {
     width: 80%;
     margin: auto;
@@ -24,6 +31,9 @@ header {
     margin-bottom: 3em;
 }
 
+/********************
+CARD FROM ALBUM
+*********************/
 .card {
     background-color: var(--white);
     border: 1px solid var(--gray-border);
@@ -39,6 +49,9 @@ header {
     max-height: 300px;
 }
 
+/********************
+Plant title links
+*********************/
 .album a {
     font-size: 105%;
     color: var(--dark-accent);

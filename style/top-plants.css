@@ -1,3 +1,7 @@
+/********************
+Create gray background
+*********************/
+
 html {
     background-color: var(--light-gray);
 }
@@ -11,6 +15,9 @@ header {
     border-bottom: 0;
 }
 
+/********************
+TABLE 
+*********************/
 table {
     margin: auto;
     text-align: left;
