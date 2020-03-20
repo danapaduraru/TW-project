@@ -147,6 +147,24 @@ Website Title + Logo
 #title-logo h1{
     margin-block-start: 15px;
 }
+/**************
+Account button
+***************/
+#account{
+    letter-spacing: 0.1em;
+    margin-top: 10px;
+    margin-right: 15px;
+    margin-left: auto;
+    text-align: center;
+    line-height: 90%;
+    font-size: 130%;
+    color: var(--dark-accent);
+}
+
+#account:hover {
+    color: var(--light-accent);
+    cursor: pointer;
+}
 
 /********************
 Gray Section
@@ -218,7 +236,7 @@ input[type="text"] {
 
 .checkboxes {
     line-height: 150%;
-    width: 40%;
+    width: 45%;
     margin: auto;
     display: grid;
     grid-template-columns: 2fr 2fr 2fr 2fr;
@@ -251,13 +269,18 @@ REGISTER AND LOGIN FORMS
 }
 
 /********************
-Input for register and login forms
+Input for register,login and add album forms
 *********************/
 
 .form-login-register {
     width: 50%;
     margin: auto;
     display: grid;
+}
+.form-addAlbum{
+    width: 50%;
+    margin: auto;
+    display: grid; 
 }
 
 .input-form {
@@ -278,7 +301,7 @@ Buttons for register and login forms
 CLOSE BUTTONS for forms
 *********************/
   
-.close-register-form, .close-login-form {
+.close-register-form, .close-login-form, .close-addAlbum-form {
     color: #aaa;
     float: right;
     font-size: 28px;
@@ -288,7 +311,9 @@ CLOSE BUTTONS for forms
 .close-register-form:hover,
 .close-register-form:focus,
 .close-login-form:hover,
-.close-login-form:focus {
+.close-login-form:focus,
+.close-addAlbum-form:hover,
+.close-addAlbum-form:focus {
     color: var(--black-text);
     text-decoration: none;
     cursor: pointer;
