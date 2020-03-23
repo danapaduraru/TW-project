@@ -147,11 +147,11 @@ Website Title + Logo
 #title-logo h1{
     margin-block-start: 15px;
 }
+
 /**************
 Account button
 ***************/
 #account{
-    letter-spacing: 0.1em;
     margin-top: 0px;
     margin-right: 15px;
     margin-left: auto;
