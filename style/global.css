@@ -7,6 +7,14 @@ body {
     color: var(--dark-text);
     overflow-x: hidden;
 }
+h1{
+    text-align: center;
+}
+
+h3{
+    text-align: center;
+}
+
 
 /********************
 LINKS
@@ -195,6 +203,9 @@ Welcome Paragraph + Pic
 .gray-paragraph-with-pic img {
     max-width: 40%;
 }
+.gray-paragraph-with-pic li{
+    text-align: left;
+}
 
 /********************
 SEARCHBAR DIV
@@ -293,7 +304,7 @@ Input for register,login and add album forms
 .form-addAlbum{
     width: 50%;
     margin: auto;
-    display: grid; 
+    display: grid;
 }
 
 .input-form {
