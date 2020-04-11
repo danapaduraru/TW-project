@@ -100,3 +100,9 @@ DROPDOWN
 .dropdown:hover .dropdown-content { display: block; }
   
 .dropdown:hover .dropbtn { background-color: #f0f5f5; }
+
+/* RESPONSIVENESS */
+
+@media screen and (max-width: 1300px) {
+    
+}
