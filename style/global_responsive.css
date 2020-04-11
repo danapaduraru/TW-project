@@ -1,0 +1,25 @@
+@media screen and (max-width: 1300px) {
+
+    html {
+        background-color: khaki;
+    }
+
+    /* HEADER */
+    #title-logo {
+        font-size: 100%;
+    }
+
+    /* WELCOME SECTION */
+    h3 {
+        font-size: 110%;
+    }
+
+    ul, li {
+        font-size: 90%;
+    }
+
+    .btn {
+        padding: 6px;
+        font-size: 90%;
+    }
+}

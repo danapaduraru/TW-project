@@ -61,3 +61,14 @@ Plant title links
     text-decoration: underline;
 }
   
+
+/* RESPONSIVENESS */
+@media screen and (max-width: 1300px) {
+    .album {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .card img {
+        max-height: 350px;
+    }
+}

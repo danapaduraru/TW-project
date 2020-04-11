@@ -49,6 +49,7 @@ Card Picture
 *********************/
 
 .card img {
+    margin-top: 20px;
     max-height: 600px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
@@ -67,4 +68,21 @@ th {
 
 tr {
     font-weight: 600;
+}
+
+/* RESPONSIVENESS */
+
+@media screen and (max-width: 1300px) {
+
+    .card {
+        width: 70%;
+    }
+
+    .card img {
+        max-height: 500px;
+    }
+
+    .card-info .btn {
+        font-size: 110%;
+    }
 }
