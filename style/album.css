@@ -60,12 +60,18 @@ Plant title links
 .album a:hover {
     text-decoration: underline;
 }
-  
 
 /* RESPONSIVENESS */
+
 @media screen and (max-width: 1300px) {
     .album {
         grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .album {
+        grid-template-columns: 1fr 1fr;
     }
 
     .card img {

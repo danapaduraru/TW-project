@@ -1,9 +1,64 @@
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 800px) {
 
     html {
-        background-color: khaki;
+        background-color: pink;
     }
 
+    /********************
+    Welcome Paragraph + Pic
+    *********************/
+    .gray-paragraph-with-pic .btn {
+       width: 60%;
+       display: flex;
+       flex-direction: column;
+    }
+
+    /********************
+    Register,login and add album forms
+    *********************/
+    .pop-up-form-content {
+        width: 80%;
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+
+    html {
+        background-color: yellow;
+    }
+
+    /********************
+    Welcome Paragraph + Pic
+    *********************/
+
+    .gray-paragraph-with-pic {
+        flex-direction: column-reverse;
+        align-items: center;
+        padding: 0px;
+        margin: auto;
+        width: 100%;
+    }
+
+    .gray-paragraph-with-pic img {
+        margin: auto;
+        margin-top: 20px;
+        max-width: 60%;
+    }
+
+    .gray-paragraph-with-pic h3 {
+        width: 100%;
+    }
+
+    /********************
+    Register,login and add album forms
+    *********************/
+    .pop-up-form-content {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 1300px) {
     /* HEADER */
     #title-logo {
         font-size: 100%;
@@ -21,5 +76,19 @@
     .btn {
         padding: 6px;
         font-size: 90%;
+    }
+
+    /********************
+    Searchbar
+    *********************/
+    #div-searchbar {
+        width: 100%;
+    }
+
+    #div-searchbar form {
+        width: 60%;
+        margin: auto;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 12px;
     }
 }
