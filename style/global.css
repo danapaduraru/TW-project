@@ -214,56 +214,53 @@ SEARCHBAR DIV
 #div-searchbar {
     width: 60%;
     margin: auto;
-    padding: 30px;
-    margin-top: -40px;
     text-align: center;
     margin-bottom: 2%;
     outline: none;
-    background-color: transparent;
-    background-repeat:no-repeat;
-    vertical-align: auto;
+}
+
+#div-searchbar form {
+    width:60%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 input[type="text"] {
     border: none;
-    border-bottom: var(--dark-accent) 1px solid;
+    border: var(--dark-accent) 1px solid;
     font-family: "Lato", sans-serif;
 }
 
+#div-searchbar label {
+    margin-top: 20px;
+    font-size: 110%;
+    font-weight: 600;
+    color: var(--dark-accent);
+}
+
 .input-search {
-    width: 80%;
     height: 20px;
     margin-top: 20px;
-    margin-bottom: 20px;
     text-align: center;
-    font-size: 110%;
+    font-size: 80%;
     outline: none;
     background-color: transparent;
 }
 
 .btn-search {
-    font-size: 160%;
+    height: 30px;
+    margin-top: 20px;
+    font-size: 110%;
+    font-weight: 600;
     color: var(--dark-accent);
-    background-color: var(--white);
-    border: none;
-    outline: none;
-    background-color: transparent;
+    border: var(--dark-accent) 1px solid;
+    font-family: "Lato", sans-serif;
 }
 
 .btn-search:hover {
     cursor: pointer;
     color: var(--light-accent);
-}
-
-.checkboxes {
-    line-height: 150%;
-    width: 60%;
-    margin: auto;
-    align-items: center;
-    vertical-align: middle;
-    display: grid;
-    grid-template-columns: 2fr 2fr 2fr 2fr;
-    white-space: nowrap;
 }
 
 /****************************************
