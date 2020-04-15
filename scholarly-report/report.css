@@ -4,10 +4,11 @@ body {
     margin-left: 20%;
     margin-right: 20%;
     text-align: justify;
+    font-size: 110%;
 }
 
-h1, h3 {
-    color: rgb(81, 0, 161);
+h1, h3, a {
+    color: #006616;
 }
 
 h1 {
@@ -36,5 +37,5 @@ section {
 
 footer {
     line-height: 1;
-    color: rgb(81, 0, 161);
+    color: #006616;
 }
