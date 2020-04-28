@@ -72,11 +72,18 @@
             <div class="pop-up-form-content">
                 <span class="close-register-form">&times;</span>
                 <h2> Register with a new account </h2>
-                <form action=""  class="form-login-register">
-                    <input class="input-form" type="text" placeholder="Full Name*" required>
-                    <input class="input-form" type="text" placeholder="Email*" required>
-                    <input class="input-form" type="text" placeholder="Password*" required>
-                    <button type="submit" class="btn btn-form btn-primary">
+                <form action="../controllers/register.php" method="post" class="form-login-register">
+                    <input class="input-form" type="text" placeholder="Full Name*" 
+                           name="r_fullname"
+                           required>
+                    <input class="input-form" type="text" placeholder="Email*" 
+                           name="r_email"
+                           required>
+                    <input class="input-form" type="password" placeholder="Password*" 
+                           name="r_password"
+                           required>
+                    <button type="submit" class="btn btn-form btn-primary" 
+                            name="r_submit">
                         Register
                     </button>
                 </form>
@@ -90,7 +97,7 @@
                 <h2> Login with existing account </h2>
                 <form action="" class="form-login-register">
                     <input class="input-form" type="text" placeholder="Email*" required>
-                    <input class="input-form" type="text" placeholder="Password*" required>
+                    <input class="input-form" type="password" placeholder="Password*" required>
                     <button type="submit" class="btn btn-form btn-primary">
                         Login
                     </button>
