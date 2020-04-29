@@ -95,10 +95,15 @@
             <div class="pop-up-form-content">
                 <span class="close-login-form">&times;</span>
                 <h2> Login with existing account </h2>
-                <form action="" class="form-login-register">
-                    <input class="input-form" type="text" placeholder="Email*" required>
-                    <input class="input-form" type="password" placeholder="Password*" required>
-                    <button type="submit" class="btn btn-form btn-primary">
+                <form action="../controllers/login.php" method="POST" class="form-login-register">
+                    <input class="input-form" type="text" placeholder="Email*"
+                            name = "l_email"
+                    required>
+                    <input class="input-form" type="password" placeholder="Password*"
+                            name = "l_password"
+                    required>
+                    <button type="submit" class="btn btn-form btn-primary"
+                            name="l_submit">
                         Login
                     </button>
                 </form>
