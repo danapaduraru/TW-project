@@ -14,7 +14,7 @@ class User {
         $this->email = $email;
         $this->password = $password;
     }
-    
+
     public function registerUser(): bool {
         $connection = Connection::Instance();
         
@@ -51,7 +51,23 @@ class User {
         
         return true;
     }
+
+    public function loginUser(): bool {
+        $connection = Connection::Instance();
         
+        // Select Database
+        mysqli_select_db($connection, 'planty');
+
+        // Check if an account with this email and password exists in database
+        $query = "SELECT COUNT(*) FROM USER WHERE email='" . $this->email . "' AND password = '" . $this->password . "';";
+        $result = mysqli_query($connection, $query);
+        $count = mysqli_fetch_row($result)[0];
+        if ($count != 0) {
+            // Email and password exists in database
+            return true;
+        }
+        return false;     
+    }
     
     // FULLNAME
     public function getFullname() {
