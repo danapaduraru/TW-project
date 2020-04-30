@@ -10,7 +10,7 @@ if (isset($_POST['l_submit'])) {
     // Create User object
     $user = new User($fullname, $email, $password);
     
-    // Try to register user
+    // Try to login user
     if($user->loginUser()) {
         // If query was successful, redirect to dashboard
         header('Location: ../views/dashboard.html');
