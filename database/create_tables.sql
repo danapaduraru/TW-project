@@ -38,6 +38,6 @@ CREATE TABLE plant(
 	collection VARCHAR(50) NOT NULL,
 	collecter VARCHAR(50) NOT NULL,
 	location VARCHAR(50) NOT NULL,
-	image BLOB NOT NULL,
+	image LONGBLOB NOT NULL,
 	PRIMARY KEY(id)
 );
