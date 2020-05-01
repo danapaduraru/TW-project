@@ -113,19 +113,19 @@
         <!-- SEARCH BAR -->
         <div id="div-searchbar">
             <h2> Discover new plants </h2>
-            <form action="">
+            <form action="search_plant.php" method="post">
                 <label> Plant Name </label>
-                <input class="input-search" type="text" placeholder="Plant Name ">
+                <input name="s_name" class="input-search" type="text" placeholder="Plant Name ">
                 <label> Family </label>
-                <input class="input-search" type="text" placeholder="Family">     
+                <input name="s_family" class="input-search" type="text" placeholder="Family">     
                 <label> Collection </label>
-                <input class="input-search" type="text" placeholder="Collection">
+                <input name="s_collection" class="input-search" type="text" placeholder="Collection">
                 <label> Location </label>
-                <input class="input-search" type="text" placeholder="Location">    
+                <input name="s_location" class="input-search" type="text" placeholder="Location">
                 <label> Collector </label>
-                <input class="input-search" type="text" placeholder="Collector">
+                <input name="s_collector" class="input-search" type="text" placeholder="Collector">
                 <br>
-                <button type="submit" class="btn-search">
+                <button name="s_submit" type="submit" class="btn-search">
                     Search <i class="fa fa-search"></i>
                 </button>
             </form>
