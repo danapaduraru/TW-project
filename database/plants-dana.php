@@ -10,7 +10,7 @@ function insertPlant($url, $name, $family, $collection, $collector, $location) {
     // Escape special characters in a string for use in SQL query
     $imageBlob = mysqli_real_escape_string($connection, $imageData);
     
-    $query = "INSERT INTO plant(name, family, collection, collecter, location, image) VALUES ('"
+    $query = "INSERT INTO plant(name, family, collection, collector, location, image) VALUES ('"
     . $name . "', '"
     . $family . "', '"
     . $collection . "', '"
@@ -31,6 +31,15 @@ $family = "Acoraceae ";
 $collection = "RBG 436";
 $collector = "Cope, T.A. ";
 $location = "Zhejiang";
+
+insertPlant($url, $name, $family, $collection, $collector, $location);
+
+$url = 'http://www.kew.org/herbcatimg/656741.jpg';
+$name = "Acorus calamus";
+$family = "Acoraceae ";
+$collection = "519";
+$collector = "Griffith, W. ";
+$location = "UK";
 
 insertPlant($url, $name, $family, $collection, $collector, $location);
 
