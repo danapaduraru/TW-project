@@ -135,10 +135,15 @@
             <div class="pop-up-form-content">
                 <span class="close-addAlbum-form">&times;</span>
                 <h3> Add a new album to your list </h3>
-                <form action="" class="form-addAlbum">
-                    <input class="input-form" type="text" placeholder="Name*" required>
-                    <input class="input-form" type="text" placeholder="Short description*" required>
-                    <button type="submit" class="btn btn-form btn-primary">
+                <form action="../controllers/album.php" method="POST" class="form-addAlbum">
+                    <input class="input-form" type="text" placeholder="Name*"
+                    name="a_name"
+                    required>
+                    <input class="input-form" type="text" placeholder="Short description*"
+                    name="a_description"
+                    required>
+                    <button type="submit" class="btn btn-form btn-primary"
+                    name="a_submit">
                         Add Album
                     </button>
                 </form>

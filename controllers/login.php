@@ -1,4 +1,7 @@
 <?php 
+
+session_start();
+
 require_once('../models/User.php');
 $connection = Connection::Instance();
 
@@ -13,6 +16,7 @@ if (isset($_POST['l_submit'])) {
     // Try to login user
     if($user->loginUser()) {
         // If query was successful, redirect to dashboard
+        $_SESSION['login_user']= $email;
         header('Location: ../views/dashboard.html');
     }
     else {

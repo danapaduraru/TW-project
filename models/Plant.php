@@ -6,17 +6,17 @@ class Plant{
     private $name;
     private $family;
     private $collection;
-    private $collecter;
+    private $collector;
     private $location;
     private $image;
     
     //Constructorul
 
-    public function __construct($name, $family, $collection, $collecter, $location, $image){
+    public function __construct($name, $family, $collection, $collector, $location, $image){
         $this->name = $name;
         $this->family = $family;
         $this->collection = $collection;
-        $this->collecter = $collecter;
+        $this->collector = $collector;
         $this->location = $location;
         $this->image = $image;
     }
@@ -53,12 +53,12 @@ class Plant{
 
     //collecter
 
-	public function getCollecter() {
+	public function getCollector() {
 		return $this->collecter;
 	}
 
-	public function setCollecter($collecter) {
-		$this->collecter = $collecter;
+	public function setCollecter($collector) {
+		$this->collector = $collector;
 	}
 
     //location
