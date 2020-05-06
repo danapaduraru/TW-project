@@ -1,3 +1,15 @@
+<?php 
+    require_once('../controllers/login.php');
+    $connection = Connection::Instance();
+                                        
+    // Select Database
+    mysqli_select_db($connection, 'planty'); 
+
+     //select id from user
+     $query1 = "SELECT id FROM USER WHERE email='" .$_SESSION['login_user']. "';";
+     $result1 = mysqli_query($connection, $query1);
+     $idFound = mysqli_fetch_row($result1)[0];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +46,13 @@
             </div>
             <div class="dropdown" id="account">
                 <button class="dropbtn">
-                    <h3>Account Name 
+                    <h3><?php 
+                            //select full name from user
+                            $query1 = "SELECT fullname FROM USER WHERE email='" .$_SESSION['login_user']. "';";
+                            $result1 = mysqli_query($connection, $query1);
+                            $nameFound = mysqli_fetch_row($result1)[0];
+                            echo $nameFound; ?>
+
                         <i class="fa fa-sort-desc fa "></i>
                     </h3>
                 </button>
@@ -47,7 +65,7 @@
                             </font>
                         </a>
                         <!-- <a href="album.html" class="addAlbum" ><font size="2"><b>My Albums </b><i class="fa fa-folder-open fa-xs"></font></i></a> -->
-                        <button class="logoutbtn">
+                        <button class="logoutbtn" onclick="location.href= '../controllers/logout.php'" type="button">
                             <b>Logout </b> 
                             <i class="fa fa-sign-out fa-sm "></i>
                         </button>
@@ -61,13 +79,28 @@
         <div class="gray-section">
             <h2> My Albums </h2>
             <div class="album">
-                <div class="card">
-                    <img src="./images/plant1.png">
-                    <div>
-                        <h3> <a href="#"> <em>Album 1</em></a></h3>
-                    </div>
-                </div>
-                <div class="card">
+                <?php
+                      //select name of the album
+                    $query = "SELECT * FROM album WHERE user_id='" . $idFound ."';";
+                    $result = mysqli_query($connection, $query);
+                    while($nameFound = mysqli_fetch_array($result))
+                    {
+                ?>
+                    
+                        <div class="card">
+                            <img src="./images/plant1.png">
+                            <div>
+                                <h3> <a href="album.html"><em>
+                                    <?php
+                                        // if($result && mysqli_num_rows($result)) {
+                                        // // daca exista planta cu acest ID
+                                        // $nameFound = mysqli_fetch_array($result);
+                                        print_r($nameFound["name"]);
+                                    ?>
+                            </em></a></h3>
+                            </div>
+                        </div>
+                <!-- <div class="card">
                     <img src="./images/plant2.png">
                     <div>
                         <h3> <a href="#"> <em>Album 2</em></a></h3>
@@ -78,7 +111,8 @@
                     <div>
                         <h3> <a href="#"> <em>Album 3</em></a></h3>
                     </div>
-                </div>
+                </div> -->
+                <?php } ?>
             </div>
         </div>
 
@@ -153,6 +187,7 @@
     </div> <!-- main-container -->
 
     <script src='../js/index.js'> </script>
+    <!-- <script src="../controllers/login.php"></script> -->
 
 </body>
 

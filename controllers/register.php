@@ -1,5 +1,7 @@
 <?php 
+
 require_once('../models/User.php');
+
 $connection = Connection::Instance();
 
 if (isset($_POST['r_submit'])) {
@@ -12,12 +14,13 @@ if (isset($_POST['r_submit'])) {
     
     // Try to register user
     if($user->registerUser()) {
+        
         // If query was successful, redirect to dashboard
-        header('Location: ../views/dashboard.html');
+        header('Location: ../views/index.html');
     }
     else {
         // "Something went wrong" message should appear
-        header('Location: ../views/index.html');
+        header('Location: ../views/error.html');
     }
 }
 ?>

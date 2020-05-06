@@ -16,12 +16,12 @@ if (isset($_POST['l_submit'])) {
     // Try to login user
     if($user->loginUser()) {
         // If query was successful, redirect to dashboard
-        $_SESSION['login_user']= $email;
-        header('Location: ../views/dashboard.html');
+        $_SESSION['login_user'] = $email;
+        header('Location: ../views/dashboard.php');
     }
     else {
         // "Something went wrong" message should appear
-        header('Location: ../views/index.html');
+        header('Location: ../views/error.html');
     }
 }
 ?>
