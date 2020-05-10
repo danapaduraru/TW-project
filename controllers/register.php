@@ -16,7 +16,7 @@ if (isset($_POST['r_submit'])) {
     if($user->registerUser()) {
         
         // If query was successful, redirect to dashboard
-        header('Location: ../views/index.html');
+        header('Location: ../views/index.php');
     }
     else {
         // "Something went wrong" message should appear

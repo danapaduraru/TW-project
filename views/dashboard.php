@@ -28,7 +28,7 @@
 <body>
     <aside id="sidenav">
         <a href="javascript:void(0)" id="nav-close-btn" onclick="closeNav()">&times;</a>
-        <a href="./index.html">Home</a>
+        <a href="./index.php">Home</a>
         <a href="./top-plants.html">Top Plants</a>
         <a href="./statistics.html">Statistics</a>
     </aside>
@@ -85,33 +85,17 @@
                     $result = mysqli_query($connection, $query);
                     while($nameFound = mysqli_fetch_array($result))
                     {
-                ?>
-                    
+                ?>    
                         <div class="card">
                             <img src="./images/plant1.png">
                             <div>
-                                <h3> <a href="album.html"><em>
-                                    <?php
-                                        // if($result && mysqli_num_rows($result)) {
-                                        // // daca exista planta cu acest ID
-                                        // $nameFound = mysqli_fetch_array($result);
+                                <?php 
+                                    echo"<h3> <a href=\"album.php?id=" . $nameFound['id'] . "\"><em>";
                                         print_r($nameFound["name"]);
                                     ?>
                             </em></a></h3>
                             </div>
                         </div>
-                <!-- <div class="card">
-                    <img src="./images/plant2.png">
-                    <div>
-                        <h3> <a href="#"> <em>Album 2</em></a></h3>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="./images/plant3.png">
-                    <div>
-                        <h3> <a href="#"> <em>Album 3</em></a></h3>
-                    </div>
-                </div> -->
                 <?php } ?>
             </div>
         </div>

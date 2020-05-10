@@ -45,7 +45,7 @@ $query = $query . ";";
 
     <aside id="sidenav">
         <a href="javascript:void(0)" id="nav-close-btn" onclick="closeNav()">&times;</a>
-        <a href="./index.html">Home</a>
+        <a href="./index.php">Home</a>
         <a href="./top-plants.html">Top Plants</a>
         <a href="./statistics.html">Statistics</a>
     </aside>

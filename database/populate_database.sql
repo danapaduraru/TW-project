@@ -9,4 +9,4 @@ INSERT INTO user_album(id_user, id_album) VALUES ((SELECT id FROM user WHERE ful
 
 INSERT INTO plant(name, family, collection, collecter, location, image) VALUES ('floare', 'plantus verdaculus', 'plante', 'Jhon Smith', 'Nicaragua', 'mai vedem dupa');
 
-INSERT INTO plant_album(id_plant, id_album) VALUES ((SELECT id FROM plant WHERE name = 'floare'), (SELECT id FROM album WHERE name = 'Plante carnivore'));
+INSERT INTO plant_album(id_plant, id_album) VALUES ((SELECT id FROM plant WHERE name = 'Buxus'), (SELECT id FROM album WHERE name = 'De munte'));

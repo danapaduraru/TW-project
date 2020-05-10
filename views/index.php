@@ -1,3 +1,16 @@
+<?php  
+    require_once('../models/User.php');
+    require_once('../controllers/login.php');
+    $connection = Connection::Instance();
+    
+    // Select Database
+    mysqli_select_db($connection, 'planty');
+
+    if (!isset($_SESSION['login_user'])) {
+        session_destroy();
+     }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +28,7 @@
 
     <aside id="sidenav">
         <a href="javascript:void(0)" id="nav-close-btn" onclick="closeNav()">&times;</a>
-        <a href="./index.html">Home</a>
+        <a href="./index.php">Home</a>
         <a href="./top-plants.html">Top Plants</a>
         <a href="./statistics.html">Statistics</a>
     </aside>
