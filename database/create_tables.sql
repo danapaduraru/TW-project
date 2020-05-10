@@ -15,6 +15,17 @@ CREATE TABLE album(
 	FOREIGN KEY(user_id) REFERENCES user(id)
 );
 
+CREATE TABLE plant(
+	id INT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(50) NOT NULL,
+	family VARCHAR(50) NOT NULL,
+	collection VARCHAR(50) NOT NULL,
+	collector VARCHAR(50) NOT NULL,
+	location VARCHAR(50) NOT NULL,
+	image LONGBLOB NOT NULL,
+	PRIMARY KEY(id)
+);
+
 CREATE TABLE plant_album(
 	id INT NOT NULL AUTO_INCREMENT,
 	id_plant INT NOT NULL,
@@ -24,13 +35,3 @@ CREATE TABLE plant_album(
 	FOREIGN KEY(id_album) REFERENCES album(id)
 );
 
-CREATE TABLE plant(
-	id INT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(50) NOT NULL,
-	family VARCHAR(50) NOT NULL,
-	collection VARCHAR(50) NOT NULL,
-	collector VARCHAR(50) NOT NULL,
-	location VARCHAR(50) NOT NULL,
-	image BLOB NOT NULL,
-	PRIMARY KEY(id)
-);
