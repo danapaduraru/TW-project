@@ -10,6 +10,15 @@ header {
     background-color: var(--white);
 }
 
+.tables{
+    margin: auto;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-row: auto auto;
+    grid-column-gap: 40px;
+    grid-row-gap: 20px;
+}
+
 .gray-section {
     text-align: center;
     border-bottom: 0;

@@ -28,9 +28,9 @@
 <body>
     <aside id="sidenav">
         <a href="javascript:void(0)" id="nav-close-btn" onclick="closeNav()">&times;</a>
-        <a href="./index.php">Home</a>
-        <a href="./top-plants.html">Top Plants</a>
-        <a href="./statistics.html">Statistics</a>
+        <a href="./dashboard.php">Home</a>
+        <a href="./top-plants.php">Top Plants</a>
+        <a href="./statistics.php">Statistics</a>
     </aside>
 
     <div id="main-container">
@@ -171,7 +171,6 @@
     </div> <!-- main-container -->
 
     <script src='../js/index.js'> </script>
-    <!-- <script src="../controllers/login.php"></script> -->
 
 </body>
 
