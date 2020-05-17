@@ -6,11 +6,11 @@
     // Select Database
     mysqli_select_db($connection, 'planty');
 
-    $query = "SELECT family, count(*) from plant group by family;";
-    $result = mysqli_query($connection, $query);
+    $query_families = "SELECT family, count(*) from plant group by family;";
+    $result_families = mysqli_query($connection, $query_families);
 
-    $query1 = "SELECT location, COUNT(*) FROM plant WHERE location not like '-' GROUP BY location;";
-    $result1 = mysqli_query($connection, $query1);
+    $query_location = "SELECT location, COUNT(*) FROM plant WHERE location not like '-' GROUP BY location;";
+    $result_location = mysqli_query($connection, $query_location);
 ?>
 
 <!DOCTYPE html>
@@ -35,9 +35,9 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([  
-              ['Families', 'Most frequent families'], 
+              ['Family', 'Number of plants'], 
               <?php  
-              while($row = mysqli_fetch_array($result))
+              while($row = mysqli_fetch_array($result_families))
               {  
                    echo "['".$row[0]."', ".$row[1]."],";  
               }  
@@ -45,7 +45,7 @@
         ]);
           
         var options = {
-            title: 'Top Users with albums',
+            title: 'Most frequent families',
             is3D:true
         };
 
@@ -62,7 +62,7 @@
             var data = google.visualization.arrayToDataTable([  
                 ['Country', 'Number of Plants'], 
                 <?php  
-                while($row = mysqli_fetch_array($result1))
+                while($row = mysqli_fetch_array($result_location))
                 {  
                     echo "['".$row[0]."', ".$row[1]."],";  
                 }  
@@ -77,7 +77,7 @@
             var chart = new google.visualization.PieChart(document.getElementById('top_countries_piechart'));
             chart.draw(data, options);
         }
-        </script>
+    </script>
 </head>
 
 <body>
