@@ -60,10 +60,18 @@
             <h2>
             <?php
                 if($result && mysqli_num_rows($result)) {
-                 // daca exista albumul cu acest ID
+                 // daca exista albumul cu acest ID, afisam titlul acestuia
                 $row = mysqli_fetch_array($result);
-                echo $row[1];}
+                echo $row[1];
+                }
             ?></h2>
+            <h3>
+            <?php
+                if($result && mysqli_num_rows($result)) {
+                 // daca exista albumul cu acest ID afisam si descrierea
+                echo $row[2];
+                }
+            ?></h3>
             <!-- PLANT ALBUM -->
             <div class="album">
                 <?php
