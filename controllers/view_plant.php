@@ -17,9 +17,3 @@ $img=mysqli_fetch_array($result);
 echo '<img src="data:image/jpeg;base64,'.base64_encode( $img[0] ).'"/>';
 
 ?>
-
-<html>
-    <body>
-      
-    </body>
-</html>
