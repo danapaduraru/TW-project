@@ -28,37 +28,45 @@
     <link rel="stylesheet" href="../style/global_responsive.css">
     <link rel="stylesheet" href="../style/statistics.css">
     
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+    <script src="https://unpkg.com/jspdf-autotable"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([  
-              ['Family', 'Number of plants'], 
-              <?php  
-              while($row = mysqli_fetch_array($result_families))
-              {  
-                   echo "['".$row[0]."', ".$row[1]."],";  
-              }  
-              ?>  
-        ]);
-          
-        var options = {
-            title: 'Most frequent families',
-            is3D:true
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('top_families_piechart'));
-        chart.draw(data, options);
-      }
-    </script>
-
-    <script type="text/javascript">
+        var statistics_pdf = new jsPDF();
+        
         google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
+        google.charts.setOnLoadCallback(drawChartFamilies);
 
-        function drawChart() {
+        function drawChartFamilies() {
+            var data = google.visualization.arrayToDataTable([  
+                  ['Family', 'Number of plants'], 
+                  <?php  
+                  while($row = mysqli_fetch_array($result_families))
+                  {  
+                       echo "['".$row[0]."', ".$row[1]."],";  
+                  }  
+                  ?>  
+            ]);
+
+            var options = {
+                title: 'Most frequent families',
+                is3D:true
+            };
+
+            var chart_families = new google.visualization.PieChart(document.getElementById('top_families_piechart'));
+            
+            google.visualization.events.addListener(chart_families, 'ready', function () {
+                btn_save_pdf.disabled = false;
+                statistics_pdf.addImage(chart_families.getImageURI(), 0, 60);
+              });
+            
+            chart_families.draw(data, options);
+        }
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChartCountries);
+
+        function drawChartCountries() {
             var data = google.visualization.arrayToDataTable([  
                 ['Country', 'Number of Plants'], 
                 <?php  
@@ -68,14 +76,20 @@
                 }  
                 ?>  
             ]);
-            
+
             var options = {
                 title: 'Top Countries',
                 is3D:true
             };
 
-            var chart = new google.visualization.PieChart(document.getElementById('top_countries_piechart'));
-            chart.draw(data, options);
+            var chart_countries = new google.visualization.PieChart(document.getElementById('top_countries_piechart'));
+            
+            var btn_save_pdf = document.getElementById('save-pdf');
+            google.visualization.events.addListener(chart_countries, 'ready', function () {
+                btn_save_pdf.disabled = false;
+                statistics_pdf.addImage(chart_countries.getImageURI(), 0, 160);
+              });
+            chart_countries.draw(data, options);
         }
     </script>
 </head>
@@ -107,10 +121,11 @@
         <div class="gray-section">
             <!-- <h2> Diff stats </h2> -->
             <div class="charts">
-                <div id="top_families_piechart" style="width: 700px; height: 500px;"></div>
+                <input id="save-pdf" type="button" class="btn btn-primary" value="Export PDF" disabled style="margin-bottom: 20px;"/>
+                <div id="top_families_piechart" style="width: 700px; height: 500px;"></div>                
                 <div id="top_countries_piechart" style="width: 700px; height: 500px; margin-top: 20px"></div>
                 <div>
-                    <table style="width: 400px; height: 300px; table-layout: fixed; margin-top: 20px;">
+                    <table style="width: 400px; height: 300px; table-layout: fixed; margin-top: 20px;" id="statistics-table">
                         <tr>
                             <th> </th>
                             <th>Total number</th>
@@ -155,6 +170,15 @@
     </div>
 
     <script src='../js/index.js'> </script>
+    <script>
+        var btn_save_pdf = document.getElementById('save-pdf');
+
+        statistics_pdf.autoTable({html:'#statistics-table', theme: 'grid'});
+        
+        btn_save_pdf.addEventListener('click', function () {
+            statistics_pdf.save('statistics.pdf');
+          }, false);
+    </script>
 </body>
 
 </html>
