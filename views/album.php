@@ -85,7 +85,7 @@
                             <?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $nameFound['image'] ).'"/>'; ?>
                             <div>
                                 <h3> <?php
-                                        echo"<h3> <a href=\"plant.php?id=" . $nameFound['id'] . "\"><em>"; 
+                                        echo"<h3> <a href=\"plant.php?id=" . $nameFound['id_plant'] . "\"><em>"; 
                                         print_r($nameFound['name']); ?></em></a></h3>
                             </div>
                         </div>
