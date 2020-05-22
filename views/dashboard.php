@@ -80,23 +80,34 @@
             <h2> My Albums </h2>
             <div class="album">
                 <?php
-                      //select name of the album
+                    //select album
                     $query = "SELECT * FROM album WHERE user_id='" . $idFound ."';";
                     $result = mysqli_query($connection, $query);
-                    while($nameFound = mysqli_fetch_array($result))
-                    {
-                ?>    
+                    if($result && mysqli_num_rows($result)) {
+                        while($album = mysqli_fetch_array($result))
+                        {
+                            $album_id = $album['id'];
+
+                            // Get image of the first plant from the album
+                            $query = "SELECT p2.image from plant_album p1 JOIN plant p2 ON p1.id_plant = p2.id WHERE p1.id_album=" . $album_id . " LIMIT 1;";
+                            $result_image = mysqli_query($connection, $query);
+                            $image = mysqli_fetch_row($result_image)[0];
+                    ?>    
                         <div class="card">
-                            <img src="./images/plant1.png">
+                            <?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/>'; ?>
                             <div>
                                 <?php 
-                                    echo"<h3> <a href=\"album.php?id=" . $nameFound['id'] . "\"><em>";
-                                        print_r($nameFound["name"]);
+                                    echo"<h3> <a href=\"album.php?id=" . $album_id . "\"><em>";
+                                        print_r($album["name"]);
                                     ?>
                             </em></a></h3>
                             </div>
                         </div>
-                <?php } ?>
+                <?php }
+                    } else {
+                        echo "<h3> Click on Add Album to get started. </h3>";
+                    }
+                ?>
             </div>
         </div>
 
