@@ -34,7 +34,7 @@
     
     <!-- GENERATE PIECHARTS --> 
     <script type="text/javascript">
-        var statistics_pdf = new jsPDF();
+        var stats_pdf = new jsPDF();
         
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChartFamilies);
@@ -58,7 +58,9 @@
             
             google.visualization.events.addListener(chart_families, 'ready', function () {
                 btn_save_pdf.disabled = false;
-                statistics_pdf.addImage(chart_families.getImageURI(), 0, 60);
+                stats_pdf.addPage();
+                stats_pdf.text(20, 20, 'Most frequent plant families');
+                stats_pdf.addImage(chart_families.getImageURI(), 0, 30);
               });
             
             chart_families.draw(data, options);
@@ -87,7 +89,8 @@
             var btn_save_pdf = document.getElementById('save-pdf');
             google.visualization.events.addListener(chart_countries, 'ready', function () {
                 btn_save_pdf.disabled = false;
-                statistics_pdf.addImage(chart_countries.getImageURI(), 0, 160);
+                stats_pdf.text(20, 140, 'Plants by countries');
+                stats_pdf.addImage(chart_countries.getImageURI(), 0, 150);
               });
             chart_countries.draw(data, options);
         }
@@ -144,7 +147,7 @@
                     <!-- TOP ALBUMS --> 
                     <div>
                         <h2> Comprehensive albums </h2>
-                        <table>
+                        <table id="albums-table">
                             <tr>
                                 <th> User </th>
                                 <th> Album </th>
@@ -168,29 +171,29 @@
                     <!-- TOP ALBUM CREATORS -->
                     <div>
                         <h2> Top album creators </h2>
-                        <table>
-                        <tr>
-                            <th> User </th>
-                            <th> Number of albums </th>
-                        </tr>
-                        <?php 
-                            //top albums creators
-                            $query = "SELECT u.fullname, COUNT(a.user_id) FROM user u join album a on u.id = a.user_id GROUP BY a.user_id ORDER BY COUNT(a.user_id) DESC LIMIT 10;";
-                            $result = mysqli_query($connection, $query);
+                        <table id="creators-table">
+                            <tr>
+                                <th> User </th>
+                                <th> Number of albums </th>
+                            </tr>
+                            <?php 
+                                //top albums creators
+                                $query = "SELECT u.fullname, COUNT(a.user_id) FROM user u join album a on u.id = a.user_id GROUP BY a.user_id ORDER BY COUNT(a.user_id) DESC LIMIT 10;";
+                                $result = mysqli_query($connection, $query);
 
-                            while($row = mysqli_fetch_array($result)){
-                        ?>
-                                <tr>
-                                    <td> <?php echo $row[0]; ?> </td>
-                                    <td> <?php echo $row[1]; ?> </td>
-                                </tr><?php }?>
+                                while($row = mysqli_fetch_array($result)){
+                            ?>
+                                    <tr>
+                                        <td> <?php echo $row[0]; ?> </td>
+                                        <td> <?php echo $row[1]; ?> </td>
+                                    </tr><?php }?>
                         </table>
                     </div>
 
                     <!-- STATISTICS -->
                     <div>
                         <h2> Planty statistics </h2>
-                        <table id="statistics-table">
+                        <table id="stats-table">
                             <tr>
                                 <th> </th>
                                 <th>Total number</th>
@@ -238,12 +241,20 @@
     <script src='../js/index.js'> </script>
     <script>
         var btn_save_pdf = document.getElementById('save-pdf');
+        stats_pdf.setFontSize(14);
 
-        statistics_pdf.autoTable({html:'#statistics-table', theme: 'grid'});
+        stats_pdf.text(20, 20, 'Planty Statistics');
+        stats_pdf.autoTable({html:'#stats-table', theme: 'grid', startY: 30});
+        
+        stats_pdf.text(20, 70, 'Comprehensive albums');
+        stats_pdf.autoTable({html:'#albums-table', theme: 'grid', startY: 80});
+        
+        stats_pdf.text(20, 130, 'Top album creators');
+        stats_pdf.autoTable({html:'#creators-table', theme: 'grid', startY: 140});
         
         btn_save_pdf.addEventListener('click', function () {
-            statistics_pdf.save('statistics.pdf');
-          }, false);
+            stats_pdf.save('statistics.pdf');
+        }, false);
     </script>
 </body>
 
