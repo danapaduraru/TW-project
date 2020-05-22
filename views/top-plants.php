@@ -49,12 +49,14 @@
         <div class="gray-section">
             <div style="margin: auto; margin-top: 3em;">
                 <h2> Most popular plants </h2>
-                <table style="margin-top: 2em;">
+                <table style="margin-top: 2em; text-align: center;">
                 <tr>
+                    <th> Number </th>
                     <th> Name </th>
                     <th> Times collected </th>
                 </tr>
                 <?php 
+                    $counter = 1;
                     //most popular plants
                     $query = "SELECT p.name, COUNT(a.id_plant) FROM plant p JOIN plant_album a on p.id=a.id_plant GROUP BY a.id_plant ORDER BY COUNT(a.id_plant) DESC LIMIT 10;";
                     $result = mysqli_query($connection, $query);
@@ -62,6 +64,7 @@
                     while($row = mysqli_fetch_array($result)){
                 ?>
                         <tr>
+                            <td> <?php echo $counter; $counter++; ?> </td>
                             <td> <?php echo $row[0]; ?> </td>
                             <td> <?php echo $row[1]; ?></td>
                         </tr><?php }?>

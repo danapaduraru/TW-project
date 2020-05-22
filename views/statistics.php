@@ -195,11 +195,11 @@
                                 <th> </th>
                                 <th>Total number</th>
                             </tr>
-                            <tr>
-                                <th> Plants </th>
+                            <tr> 
+                                <th> Users </th>
                                 <td>
                                     <?php 
-                                        $query = "SELECT COUNT(*) FROM plant;";
+                                        $query = "SELECT COUNT(*) FROM user;";
                                         $result = mysqli_query($connection, $query);
                                         $row = mysqli_fetch_array($result);
                                         echo $row[0];
@@ -217,11 +217,11 @@
                                     ?>
                                 </td>
                             </tr>
-                            <tr> 
-                                <th> Users </th>
+                            <tr>
+                                <th> Plants </th>
                                 <td>
                                     <?php 
-                                        $query = "SELECT COUNT(*) FROM user;";
+                                        $query = "SELECT COUNT(*) FROM plant;";
                                         $result = mysqli_query($connection, $query);
                                         $row = mysqli_fetch_array($result);
                                         echo $row[0];
