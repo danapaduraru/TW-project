@@ -32,6 +32,7 @@ $result = mysqli_query($connection, $query); // Execute query
     <title>Home | Planty</title>
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../style/dashboard.css">
     <link rel="stylesheet" href="../style/global.css">
     <link rel="stylesheet" href="../style/variables.css">
     <link rel="stylesheet" href="../style/top-plants.css">
@@ -54,12 +55,38 @@ $result = mysqli_query($connection, $query); // Execute query
         <header>
             <div id="menu-title-sidebar" onclick="openNav()">
                 <span style="font-size: 30px;">&#9776; </span>
-                <span id="menu-span"> Menu </span>
             </div>
             <div id="title-logo">
                 <h1>Planty</h1>
                 <h3>love for plants</h3>
             </div>
+            <div class="dropdown" id="account">
+                <button class="dropbtn">
+                    <h3><?php 
+                            //select full name from user
+                            $query1 = "SELECT fullname FROM USER WHERE email='" .$_SESSION['login_user']. "';";
+                            $result1 = mysqli_query($connection, $query1);
+                            $nameFound = mysqli_fetch_row($result1)[0];
+                            echo $nameFound; ?>
+
+                        <i class="fa fa-sort-desc fa "></i>
+                    </h3>
+                </button>
+                    <div class="dropdown-content">
+                        <a class="addAlbum" 
+                        onclick="triggerPopUp('pop-up-addAlbum','close-addAlbum-form')">
+                            <font size="2">
+                                <b>Add Album </b>
+                                <i class="fa fa-plus fa-sm"></i>
+                            </font>
+                        </a>
+                        <!-- <a href="album.html" class="addAlbum" ><font size="2"><b>My Albums </b><i class="fa fa-folder-open fa-xs"></font></i></a> -->
+                        <button class="logoutbtn" onclick="location.href= '../controllers/logout.php'" type="button">
+                            <b>Logout </b> 
+                            <i class="fa fa-sign-out fa-sm "></i>
+                        </button>
+                    </div>
+            </div>  
         </header>
 
         <!-- GRAY SECTION -->

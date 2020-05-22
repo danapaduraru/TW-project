@@ -51,8 +51,8 @@
                             $query1 = "SELECT fullname FROM USER WHERE email='" .$_SESSION['login_user']. "';";
                             $result1 = mysqli_query($connection, $query1);
                             $nameFound = mysqli_fetch_row($result1)[0];
-                            echo $nameFound; ?>
-
+                            echo $nameFound; 
+                        ?>
                         <i class="fa fa-sort-desc fa "></i>
                     </h3>
                 </button>
@@ -94,7 +94,11 @@
                             $image = mysqli_fetch_row($result_image)[0];
                     ?>    
                         <div class="card">
-                            <?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/>'; ?>
+                            <?php 
+                            if($image) {
+                            echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/>';
+                            }
+                            ?>
                             <div>
                                 <?php 
                                     echo"<h3> <a href=\"album.php?id=" . $album_id . "\"><em>";
