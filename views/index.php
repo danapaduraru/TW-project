@@ -9,6 +9,9 @@
     if (!isset($_SESSION['login_user'])) {
         session_destroy();
      }
+    else {
+        header('Location: ../views/dashboard.php');
+    }
 ?>
 
 <!DOCTYPE html>
