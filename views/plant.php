@@ -12,6 +12,8 @@ mysqli_select_db($connection, 'planty');
 
 // Get ID from URL
 $id = $_GET['id'];
+// Get album's ID from URL
+$id_album = $_GET['id_album'];
 $query = 'SELECT * from plant WHERE id=' . $id . ';';
 
 $result = mysqli_query($connection, $query); // Execute query
@@ -20,7 +22,7 @@ $result = mysqli_query($connection, $query); // Execute query
         //select id from user
         $query1 = "SELECT id FROM USER WHERE email='" .$_SESSION['login_user']. "';";
         $result1 = mysqli_query($connection, $query1);
-        $idFound = mysqli_fetch_row($result1)[0];
+        $id_user = mysqli_fetch_row($result1)[0];
     }
 ?>
 
@@ -142,16 +144,19 @@ $result = mysqli_query($connection, $query); // Execute query
                 <form action="../controllers/add_plant_to_album.php" method="POST" class="form-addAlbum">
                     <input type="hidden" name="p_plant_id" value="<?php echo htmlspecialchars($row[0]); ?>" /> 
                     <label for="albums">Choose an album:</label>
-                    <select id="album" name="album">
+                    <select style="margin-top: 30px" id="album" name="album">
                         <?php
-                        //select name of the album
-                            $query = "SELECT * FROM album WHERE user_id='" . $idFound ."';";
+                            // Select name of the albums that belong to the user and do not have this plant
+                            $query = "SELECT id, name FROM album WHERE user_id=" . $id_user . 
+                                    " AND id NOT IN ( SELECT id_album from plant_album WHERE id_plant=" . $row[0] . ");";
                             $result = mysqli_query($connection, $query);
-                            while($nameFound = mysqli_fetch_array($result))
-                            {
+                            while($album = mysqli_fetch_array($result))
+                            { 
                             ?>
-                                <option><?php print_r($nameFound['name']); ?></option>     
-                            <?php }?>
+                                <option><?php print_r($album['name']); ?></option>     
+                            <?php 
+                            } 
+                            ?>
                     </select>
                     <button type="submit" class="btn btn-form btn-primary"
                     name="p_submit">
