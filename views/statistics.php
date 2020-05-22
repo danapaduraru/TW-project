@@ -31,6 +31,8 @@
     <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
     <script src="https://unpkg.com/jspdf-autotable"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+    <!-- GENERATE PIECHARTS --> 
     <script type="text/javascript">
         var statistics_pdf = new jsPDF();
         
@@ -49,7 +51,6 @@
             ]);
 
             var options = {
-                title: 'Most frequent families',
                 is3D:true
             };
 
@@ -78,7 +79,6 @@
             ]);
 
             var options = {
-                title: 'Top Countries',
                 is3D:true
             };
 
@@ -92,6 +92,7 @@
             chart_countries.draw(data, options);
         }
     </script>
+    
 </head>
 
 <body>
@@ -117,53 +118,118 @@
             </div>
         </header>
 
-        <!-- WELCOME SECTION -->
-        <div class="gray-section">
-            <!-- <h2> Diff stats </h2> -->
-            <div class="charts">
-                <input id="save-pdf" type="button" class="btn btn-primary" value="Export PDF" disabled style="margin-bottom: 20px;"/>
-                <div id="top_families_piechart" style="width: 700px; height: 500px;"></div>                
-                <div id="top_countries_piechart" style="width: 700px; height: 500px; margin-top: 20px"></div>
-                <div>
-                    <table style="width: 400px; height: 300px; table-layout: fixed; margin-top: 20px;" id="statistics-table">
+        <div class="stats-container">
+            <div style="margin: 2em;"> <span> <b> Click to export this data as </b> </span> 
+            <input id="save-pdf" type="button" value="PDF" disabled/> <span> <b> or </b> </span>
+            <input id="save-csv" type="button" value="CSV" />
+            </div>
+            
+            <div class="stats">
+                
+                <div class="charts">
+                    <div>
+                        <h2> Most frequent plant families </h2>
+                        <!-- TOP FAMILIES PIECHART --> 
+                        <div id="top_families_piechart" style="width: 600px; height: 400px;"></div> 
+                    </div>
+                    <div>
+                        <h2> Plants by countries </h2>
+                        <!-- TOP COUNTRIES PIECHART --> 
+                        <div id="top_countries_piechart" style="width: 600px; height: 400px;"></div>
+                    </div>
+                    
+                </div>
+                
+                <div class="stats-tables">
+                    <!-- TOP ALBUMS --> 
+                    <div>
+                        <h2> Comprehensive albums </h2>
+                        <table>
+                            <tr>
+                                <th> User </th>
+                                <th> Album </th>
+                                <th> Number of plants </th>
+                            </tr>
+                            <?php 
+                                //comprehensive albums
+                                $query = "SELECT u.fullname, a.name, COUNT(p.id_album) FROM user u join album a on u.id=a.user_id join plant_album p on a.id = p.id_album GROUP BY p.id_album ORDER BY COUNT(p.id_album) DESC LIMIT 10;";
+                                $result = mysqli_query($connection, $query);
+
+                                while($row = mysqli_fetch_array($result)){
+                            ?>
+                            <tr>
+                                <td> <?php echo $row[0]; ?> </td>
+                                <td> <?php echo $row[1]; ?></td>
+                                <td> <?php echo $row[2]; ?> </td>
+                            </tr><?php } ?>
+                        </table>
+                    </div>
+
+                    <!-- TOP ALBUM CREATORS -->
+                    <div>
+                        <h2> Top album creators </h2>
+                        <table>
                         <tr>
-                            <th> </th>
-                            <th>Total number</th>
+                            <th> User </th>
+                            <th> Number of albums </th>
                         </tr>
-                        <tr>
-                            <th> Plants </th>
-                            <td>
-                                <?php 
-                                    $query = "SELECT COUNT(*) FROM plant;";
-                                    $result = mysqli_query($connection, $query);
-                                    $row = mysqli_fetch_array($result);
-                                    echo $row[0];
-                                ?>
-                            </td>
-                        </tr>
-                        <tr> 
-                            <th> Albums </th>
-                            <td>
-                                <?php 
-                                    $query = "SELECT COUNT(*) FROM album;";
-                                    $result = mysqli_query($connection, $query);
-                                    $row = mysqli_fetch_array($result);
-                                    echo $row[0];
-                                ?>
-                            </td>
-                        </tr>
-                        <tr> 
-                            <th> Users </th>
-                            <td>
-                                <?php 
-                                    $query = "SELECT COUNT(*) FROM user;";
-                                    $result = mysqli_query($connection, $query);
-                                    $row = mysqli_fetch_array($result);
-                                    echo $row[0];
-                                ?>
-                            </td>
-                        </tr>
-                    </table>
+                        <?php 
+                            //top albums creators
+                            $query = "SELECT u.fullname, COUNT(a.user_id) FROM user u join album a on u.id = a.user_id GROUP BY a.user_id ORDER BY COUNT(a.user_id) DESC LIMIT 10;";
+                            $result = mysqli_query($connection, $query);
+
+                            while($row = mysqli_fetch_array($result)){
+                        ?>
+                                <tr>
+                                    <td> <?php echo $row[0]; ?> </td>
+                                    <td> <?php echo $row[1]; ?> </td>
+                                </tr><?php }?>
+                        </table>
+                    </div>
+
+                    <!-- STATISTICS -->
+                    <div>
+                        <h2> Planty statistics </h2>
+                        <table id="statistics-table">
+                            <tr>
+                                <th> </th>
+                                <th>Total number</th>
+                            </tr>
+                            <tr>
+                                <th> Plants </th>
+                                <td>
+                                    <?php 
+                                        $query = "SELECT COUNT(*) FROM plant;";
+                                        $result = mysqli_query($connection, $query);
+                                        $row = mysqli_fetch_array($result);
+                                        echo $row[0];
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr> 
+                                <th> Albums </th>
+                                <td>
+                                    <?php 
+                                        $query = "SELECT COUNT(*) FROM album;";
+                                        $result = mysqli_query($connection, $query);
+                                        $row = mysqli_fetch_array($result);
+                                        echo $row[0];
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr> 
+                                <th> Users </th>
+                                <td>
+                                    <?php 
+                                        $query = "SELECT COUNT(*) FROM user;";
+                                        $result = mysqli_query($connection, $query);
+                                        $row = mysqli_fetch_array($result);
+                                        echo $row[0];
+                                    ?>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
