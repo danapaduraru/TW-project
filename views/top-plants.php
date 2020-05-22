@@ -56,8 +56,8 @@
                 <div><table style="margin-top: 15px;">
                     <tr><b>Most popular plants</b></tr>
                     <tr>
-                        <th> Plant name </th>
-                        <th> Plants number </th>
+                        <th> Name </th>
+                        <th> Times saved </th>
                     </tr>
                     <?php 
                         //most popular plants
@@ -75,9 +75,9 @@
                 <div><table style="margin-top: 15px;">
                     <tr><b>Comprehensive albums</b></tr>
                     <tr>
-                        <th> User name </th>
-                        <th> Album name </th>
-                        <th> Plants number </th>
+                        <th> User </th>
+                        <th> Album </th>
+                        <th> Number of plants </th>
                     </tr>
                     <?php 
                         //comprehensive albums
@@ -98,8 +98,8 @@
                 <div><table style="margin-top: 15px;">
                     <tr><b>Top album creators</b></tr>
                     <tr>
-                        <th> User name </th>
-                        <th> Albums number </th>
+                        <th> User </th>
+                        <th> Number of albums </th>
                     </tr>
                     <?php 
                         //top albums creators
