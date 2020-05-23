@@ -1,16 +1,16 @@
 <?php
-    require_once('../models/Connection.php');
+require_once('../models/Connection.php');
 
-    $connection = Connection::Instance();
-                                        
-    // Select Database
-    mysqli_select_db($connection, 'planty');
+$connection = Connection::Instance();
 
-    $query_families = "SELECT family, count(*) from plant group by family;";
-    $result_families = mysqli_query($connection, $query_families);
+// Select Database
+mysqli_select_db($connection, 'planty');
 
-    $query_location = "SELECT location, COUNT(*) FROM plant WHERE location not like '-' GROUP BY location;";
-    $result_location = mysqli_query($connection, $query_location);
+$query_families = "SELECT family, count(*) from plant group by family;";
+$result_families = mysqli_query($connection, $query_families);
+
+$query_location = "SELECT location, COUNT(*) FROM plant WHERE location not like '-' GROUP BY location;";
+$result_location = mysqli_query($connection, $query_location);
 ?>
 
 <!DOCTYPE html>
@@ -124,7 +124,9 @@
         <div class="stats-container">
             <div style="margin: 2em;"> <span> <b> Click to export this data as </b> </span> 
             <input id="save-pdf" type="button" value="PDF" disabled/> <span> <b> or </b> </span>
-            <input id="save-csv" type="button" value="CSV" />
+            <form action="../controllers/export_csv.php" method="post" style="display:inline;">
+                <input id="save-csv" type="submit" value="CSV"  name="save-csv"/>
+            </form>
             </div>
             
             <div class="stats">
