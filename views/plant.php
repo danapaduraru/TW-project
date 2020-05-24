@@ -10,10 +10,14 @@ mysqli_select_db($connection, 'planty');
 //     session_destroy();
 // }
 
-// Get ID from URL
+// Get plant D from URL
 $id = $_GET['id'];
+
 // Get album's ID from URL
-$id_album = $_GET['id_album'];
+if (isset($_GET['id_album'])) {
+    $id_album = $_GET['id_album'];
+}
+
 $query = 'SELECT * from plant WHERE id=' . $id . ';';
 
 $result = mysqli_query($connection, $query); // Execute query
