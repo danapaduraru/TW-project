@@ -1,14 +1,16 @@
 <?php 
     require_once('../controllers/login.php');
+    require_once('../controllers/get_recommendations.php');
+
     $connection = Connection::Instance();
                                         
     // Select Database
     mysqli_select_db($connection, 'planty'); 
 
      //select id from user
-     $query1 = "SELECT id FROM USER WHERE email='" .$_SESSION['login_user']. "';";
-     $result1 = mysqli_query($connection, $query1);
-     $idFound = mysqli_fetch_row($result1)[0];
+     $query = "SELECT id FROM USER WHERE email='" .$_SESSION['login_user']. "';";
+     $result = mysqli_query($connection, $query);
+     $id_user = mysqli_fetch_row($result)[0];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,10 +50,10 @@
                 <button class="dropbtn">
                     <h3><?php 
                             //select full name from user
-                            $query1 = "SELECT fullname FROM USER WHERE email='" .$_SESSION['login_user']. "';";
-                            $result1 = mysqli_query($connection, $query1);
-                            $nameFound = mysqli_fetch_row($result1)[0];
-                            echo $nameFound; 
+                            $query = "SELECT fullname FROM USER WHERE email='" .$_SESSION['login_user']. "';";
+                            $result = mysqli_query($connection, $query);
+                            $full_name = mysqli_fetch_row($result)[0];
+                            echo $full_name; 
                         ?>
                         <i class="fa fa-sort-desc fa "></i>
                     </h3>
@@ -81,7 +83,7 @@
             <div class="album">
                 <?php
                     //select album
-                    $query = "SELECT * FROM album WHERE user_id='" . $idFound ."';";
+                    $query = "SELECT * FROM album WHERE user_id='" . $id_user ."';";
                     $result = mysqli_query($connection, $query);
                     if($result && mysqli_num_rows($result)) {
                         while($album = mysqli_fetch_array($result))
@@ -142,33 +144,48 @@
         <div class="gray-section">
             <h2> Recommendations </h2>
             <div class="album">
-                <div class="card">
-                    <img src="./images/plant1.png">
-                    <div>
-                        <h3> <a href="#"> <em>Winter Plants</em></a></h3>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="./images/plant2.png">
-                    <div>
-                        <h3> <a href="#"> <em>Spring Plants</em></a></h3>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="./images/plant3.png">
-                    <div>
-                        <h3> <a href="#"> <em>Therapeutic Plants</em></a></h3>
-                    </div>
-                </div>
+                <?php
+                foreach($recommendations as $album_id) {
+                    //select album
+                    $query = "SELECT * FROM album WHERE id='" . $album_id ."';";
+                    $result = mysqli_query($connection, $query);
+                    if($result && mysqli_num_rows($result)) {
+                        while($album = mysqli_fetch_array($result))
+                        {
+                            $album_id = $album['id'];
+
+                            // Get image of the first plant from the album
+                            $query = "SELECT p2.image from plant_album p1 JOIN plant p2 ON p1.id_plant = p2.id WHERE p1.id_album=" . $album_id . " LIMIT 1;";
+                            $result_image = mysqli_query($connection, $query);
+                            $image = mysqli_fetch_row($result_image)[0];
+                    ?>    
+                        <div class="card">
+                            <?php 
+                            if($image) {
+                            echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/>';
+                            }
+                            ?>
+                            <div>
+                                <?php 
+                                    echo"<h3> <a href=\"album.php?id=" . $album_id . "\"><em>";
+                                        print_r($album["name"]);
+                                    ?>
+                            </em></a></h3>
+                            </div>
+                        </div>
+                <?php
+                        }
+                    }
+                }
+                ?>
             </div>
-        </div>
 
         <!-- Pop up Add Album FORM -->
         <div id="pop-up-addAlbum" class="pop-up-form">
             <div class="pop-up-form-content">
                 <span class="close-addAlbum-form">&times;</span>
                 <h3> Add a new album to your list </h3>
-                <form action="../controllers/album.php" method="POST" class="form-addAlbum">
+                <form action="../controllers/add_album.php" method="POST" class="form-addAlbum">
                     <input class="input-form" type="text" placeholder="Name*"
                     name="a_name"
                     required>
