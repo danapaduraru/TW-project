@@ -1,12 +1,13 @@
 <?php 
+    require_once('../models/User.php');
     require_once('../controllers/login.php');
     $connection = Connection::Instance();
                                         
     // Select Database
     mysqli_select_db($connection, 'planty'); 
 
-    $id = $_GET['id'];
-    $query = 'SELECT * from album WHERE id=' . $id . ';';
+    $ida = $_GET['id'];
+    $query = 'SELECT * from album WHERE id=' . $ida . ';';
 
     $result = mysqli_query($connection, $query); // Execute query
 
@@ -14,7 +15,7 @@
         //select id from user
         $query1 = "SELECT id FROM USER WHERE email='" .$_SESSION['login_user']. "';";
         $result1 = mysqli_query($connection, $query1);
-        $idFound = mysqli_fetch_row($result1)[0];
+        $id_user = mysqli_fetch_row($result1)[0];
     }
 ?>
 
@@ -71,12 +72,65 @@
                  // daca exista albumul cu acest ID afisam si descrierea
                 echo $row[2];
                 }
-            ?></h3>
+            ?>
+            <div class="delete_album">
+                        <div id="pop-up-deleteAlbum" class="pop-up-form">
+                            <div class="pop-up-form-content">
+                                <span class="close-deleteAlbum-form">&times;</span>
+                                <h3> Are you sure that you want to delete this album? </h3>
+                                <form action="../controllers/delete_album.php" method="POST" class="form-deleteAlbum">
+                                    <input type="hidden" name="album_id" value="<?php echo htmlspecialchars($row[0]); ?>" />
+                                        <button type="submit" class="btn btn-form btn-primary"
+                                                name="a_submit">
+                                                Delete album
+                                        </button>
+                                </form>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-form btn-primary delete_alb" onclick="triggerPopUp('pop-up-deleteAlbum','close-deleteAlbum-form')">
+                            Delete Album
+                        </button>
+
+                        <div id="pop-up-addAlbum" class="pop-up-form">
+                            <div class="pop-up-form-content">
+                                <span class="close-addAlbum-form">&times;</span>
+                                <h3> Delete a plant from your album </h3>
+                                <form action="../controllers/delete_plant.php" method="POST" class="form-addAlbum">
+                                    <input type="hidden" name="a_album_id" value="<?php echo htmlspecialchars($row[0]); ?>" /> 
+                                    <label for="plants">Choose a plant:</label>
+                                    <select style="margin-top: 30px" id="plant" name="plant">
+                                        <?php
+                                            // Select name of the plants that belong to current album
+
+                                            $query = "SELECT p.name FROM plant p JOIN plant_album pa on p.id = pa.id_plant WHERE pa.id_album=" . $ida .";";
+                                            $result = mysqli_query($connection, $query);
+                                            while($plant = mysqli_fetch_array($result))
+                                            { 
+                                            ?>
+                                                <option><?php print_r($plant['name']); ?></option>     
+                                            <?php 
+                                            } 
+                                            ?>
+                                    </select>
+                                    <button type="submit" class="btn btn-form btn-primary"
+                                    name="pl_submit">
+                                    Delete plant
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                <button type="submit" class="btn btn-form btn-primary delete_plant" onclick="triggerPopUp('pop-up-addAlbum','close-addAlbum-form')">
+                            Delete Plant
+                        </button>
+                    
+            </div>
+            </h3>
             <!-- PLANT ALBUM -->
             <div class="album">
                 <?php
                     // selectam numele acelor plante care apartin albumului selectat de noi
-                    $query = "SELECT * FROM plant p join plant_album a on p.id = a.id_plant where id_album='".$id ."';";
+                    $query = "SELECT * FROM plant p join plant_album a on p.id = a.id_plant where id_album='".$ida ."';";
                     $result = mysqli_query($connection, $query);
                     while($nameFound = mysqli_fetch_array($result))
                     {

@@ -10,7 +10,7 @@ mysqli_select_db($connection, 'planty');
 //     session_destroy();
 // }
 
-// Get plant D from URL
+// Get plant ID from URL
 $id = $_GET['id'];
 
 // Get album's ID from URL

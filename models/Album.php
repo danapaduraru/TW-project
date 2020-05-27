@@ -40,6 +40,7 @@ class Album{
         }
         return true;
     }
+
     
     //name
     
@@ -59,6 +60,48 @@ class Album{
     
     public function setShort_description($short_description) {
         $this->short_description = $short_description;
+    }
+}
+
+class Delete extends Album{
+    private $tableName;
+
+    public function __construct($tableName){
+        $this->tableName = $tableName;
+    }
+
+    public function deleteAlbum(): bool{
+
+        
+        $connection = Connection::Instance();
+        
+        // Select Database
+        mysqli_select_db($connection, 'planty');
+
+        echo mysqli_error($connection);
+
+        if (isset($_POST['a_submit'])) {
+            if(isset($_POST['album_id'])){
+
+                $ida = $_POST['album_id'];
+
+                //delete album from database
+                $query = "DELETE FROM plant_album WHERE id_album='". $ida ."';";
+                $query1 = "DELETE FROM album WHERE id='". $ida ."';";
+                if(!($result = mysqli_query($connection, $query))){
+                    throw new Exception("Error: not deleted");
+                }
+                else{
+                    if(!($result = mysqli_query($connection, $query1)))
+                    {
+                        throw new Exception("Error: not deleted");
+                    }
+                    else {
+                        return true;
+                    }
+                }
+            }
+        }
     }
 }
 
