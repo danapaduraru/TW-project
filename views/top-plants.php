@@ -71,8 +71,9 @@
                 </table>
                 
                 <div style="margin: 2em;"> 
-                    <img src="images/rss-feed-icon.png" style="width: 30px;">
-                    <a href="#" style="color: var(--light-accent);"> RSS Feed </a>
+                    <a href="./rsstop.php" style="color: var(--light-accent);"> RSS Feed
+                    <img src="images/rss-feed-icon.png" style="width: 40px;">
+                    </a>
                 </div>
             </div>
         </div>
