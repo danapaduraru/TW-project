@@ -34,13 +34,17 @@
             <li><a href="#usecases">5. Use-Case Diagram</a></li>
             <li><a href="#functionalities">6. Functionalities</a>
             </li>
-            <li><a href="#technologies">8. Technologies</a>
+            <li><a href="#technologies"7. Technologies</a>
                 <ul>
-                    <li><a href="#tech_1">8.1 Technology 1 </a></li>
-                    <li><a href="#tech_2">8.2 Technology 2 </a></li>
+                    <li><a href="#tech_1">7.1 PHP </a></li>
+                    <li><a href="#tech_2">7.2 Maria DB</a></li>
+                    <li><a href="#tech_3">7.3 HTML, CSS, JS</a></li>
+                    <li><a href="#tech_4">7.4 Github </a></li>
+                    <li><a href="#tech_5">7.5 Google Charts </a></li>
+                    <li><a href="#tech_6">7.6 JSPDF </a></li>
                 </ul>
             </li>
-            <li><a href="#bibliography">9. Bibliography & Sources</a>
+            <li><a href="#bibliography">8. Bibliography & Sources</a>
         </ul>
     </div>
 
@@ -48,51 +52,59 @@
         <h1> 1. Introduction </h1>
         <p> <b> Planty </b> is a Web platform for online herbariums. A user can create plant albums and look at other public thematic albums. </p>
         <p> Moreover, users can look up plants using a search platform with multiple filters: plant name, collection, collector, location and family. </p>
-        <p> Users that create an account will also receive recommendations of albums based on the plants they searched for or added to their own albums. </p>
+        <p> Users that create an account will also receive recommendations of albums based on the plants they added to their own albums, therefore discovering more of what they like and are interested in. </p>
     </section>
 
     <section id="appflow">
         <h1> 2. Application Flow </h1>
-        <p>  The flow of the web application starts with the user entering the web application. </p>
-        <p>  Using HTTP methods, we make calls to the server-side. </p>
-        <p>  There, controllers handle the bussiness logic of the application, like logging, registering a new user, searching for a plant, generating recommendations. </p>
+        <p>  The flow of Planty starts with the user entering the web application. </p>
+        <p> The views are the HTML files that we created, which keep the static data and are used as a connector between the server and our controllers.</p>
+        <p>  The controllers handle the bussiness logic of the application. This consists of registering and logging users, searching for a plant, managing albums and, last but not least, generating recommendations. </p>
         <p>  The data used is provided by the Data Access Layer, which has access to a database and is composed of Models which represent the objects found in the tabels from the database. </p>
 
         <h3 id="appflow_1_1"> Application Flow Diagram </h3>
-        <img src="imgs/old-images/App Flow.jpg" alt="appflow" style="width: 80%;">
+        <img src="imgs/old-images/App%20Flow.png" alt="appflow" style="width: 70%;">
     </section>
 
     <section id="db">
         <h1> 3. Database </h1>
         <p>In this application, we make use of a database in order to store all the information so that the users can keep track of their albums.</p>
-        <p> The <strong>users</strong> table provides storage for all existing users on the platform.  </p>
-        <p> The <strong>plant</strong> table is used to store all the plants along with their attributes. </p>
-        <p> The <strong>album</strong> table stores all the albums created by users or by the administrators. </p>
-        <p> The <strong>user_album</strong> table associates a user with the table they have created.</p>
-        <p> The <strong>plant_album</strong> table associates a plant with the albums that contain that plant.</p>
+        <p> The <strong>user</strong> table provides storage for all existing users on the platform. The fields stored are: full name (for a better customer experience), email (there can't be two accounts with the same email) and password.  </p>
+        <p> The <strong>plant</strong> table is used to store all the plants along with their attributes. While researching other previously created applications similar to ours, we discovered that most online herbariums use quite the same fields in order to identify their plants. <br>
+            Inspired by websites like <a href="https://apps.kew.org"> Kew, Royal Botanical Gardens </a> and <a href="https://herbarium.univie.ac.at"> Virtual Herbaria </a>, we chose to identify plants by the following fields:
+        </p>
+        <ul>
+            <li>name - the scientific name in Latin, because it is universal</li>
+            <li>family - an important way of categorizing plants </li>
+            <li>collection - a collection helps users track the plants they are interested in better</li>
+            <li>collector -  the collector is the person who uploaded the plant to the online herbarium</li>
+            <li>location - where the plant was discovered</li>
+            <li>image - is 64-bytes encoded and plays a huge visual role for the entire application, helps identify plants easier. All images were downloaded from <a href="https://apps.kew.org"> Kew, Royal Botanical Gardens </a>.</li>
+        </ul>
+        <p> The <strong>album</strong> table stores all the albums created by users. Each album has a description where the user can provide details about it if needed. </p>
+        <p> The <strong>plant_album</strong> table associates a plant with the albums that contain that plant, so that we can easily get all the plants for an album.</p>
         <h3 id="db_1"> 3.1 Database schema </h3>
-        <p> <img src="imgs/old-images/Database.jpg" alt="Database Schema" style="width: 90%;"/> </p>
+        <p> <img src="imgs/old-images/Database.jpg" alt="Database Schema" style="width: 50%;"/> </p>
     </section>
 
     <section id="mvc">
         <h1> 4. MVC Model</h1>
         <img id="mvc-pic" src="imgs/old-images/model-view-controller-mvc-explained.jpg">
-        <p>Model-View-Controller (MVC) is an arhitectural pattern that separates an application into three main logical components: the model, the view and the controller.
-        Each of these components are built to handle specific development aspects of an application.</p>
-        <p>Advantages include:</p>
+        <p><b> Model-View-Controller (MVC) </b> is an arhitectural pattern that separates an application into three main components: the model, the view and the controller. 
+        Each of these components has a specific role and contribution to the development of the application.</p>
+        <p> The MVC paradigm is easy to understand and to follow, and it brings to the table a couple advantages:</p>
         <ul>
-            <li>easier maintenance by keeping the data-manipulating logic separate</li>
-            <li>modularity, decoupled code (fewer dependencies)</li>
+            <li> code decoupling -  the code has fewer dependencies and therefore it is easy to manipulate</li>
+            <li> modularity -  the code is easier to organize</li>
             <li>modification not affecting the entire model</li>
-            <li>scalability</li>
-            <li>extensiblity</li>
+            <li> the project can be easily scaled and extended with new functionalities as the changes will not affect the current code</li>
         </ul>
         <h3 id="mvc_1"> 4.1 Model </h3>
-        <p> Responsible for the business domain state knowledge. The model in our application wil consist of the database entities created.</p>
+        <p> The model in our application wil consist of the database entities created. This component is responsible for the data-related logic that the application works with, and transfers information to the Controller component.</p>
         <h3 id="mvc_2"> 4.2 View </h3>
-        <p> Responsible for a presentation view of the business domain. It will be represented by html files for every page in the website. </p>
+        <p> This component will be represented by html files for every page in the website. It is basically the user interface logic that the user interacts with.</p>
         <h3 id="mvc_3"> 4.3 Controller </h3>
-        <p> Responsible for controlling the flow and state of the user input. Our application implements Javascript controllers, using the models and generating the views. </p>
+        <p> The controllers of the application are the connection between views and models. They process the incoming requests from the views and handle the data received from the models.</p>
     </section>
 
     <section id="usecases">
@@ -120,24 +132,28 @@
     </section>
 
     <section id="technologies">
-        <h1> 8. Technologies </h1>
-        <h3 id="tech_1"> 8.1 Node js - backend</h3>
-        <p> The backend will be implemented in Node.js, as it is accessible and responsible for this type of application.
-            We will create a REST API and connect the presentation layer with the back-end.
+        <h1> 7. Technologies </h1>
+        <h3 id="tech_1"> 7.1 PHP</h3>
+        <p> The backend will be implemented in PHP, as it is accessible for us because of the documentation online and the courses for Web Technologies.
+            Moreover, PHP works very well with database 
         </p>
-        <h3 id="tech_2"> 8.2 MongoDB</h3>
-        <p> This type of database is most suitable for the application as it is also resonable with this type of 
-            stack. This SQL-based free database is powerful enough to deliver a fast and consistent bulk of information. 
+        <h3 id="tech_2"> 7.2 MariaDB</h3>
+        <p> Fork of MySQL, MariaDB was an easy choice as a database because it interacts with PHP very well. We used HeidiSQL as an administration tool for our database.
 
-        <h3 id="tech_3"> 8.3 HMTL CSS Javascript</h3>
-        <p> This is the main soul of our front-end part. This is understandable as we want to have full control of our front-end, 
-            thus using a raw version of design modelling. This part is mostly complete, but it will also include some
-            AJAX as we want to keep our communication with our server smooth and clean.
+        <h3 id="tech_3"> 7.3 HMTL, CSS, Javascript</h3>
+        <p> Using HTML and CSS gave us a full control of our user interface, which became easily customizable. Javascript was used for functions that interact with libraries and for other interactive actions on our website, like the animation for the side menu.
         </p>
 
-        <h3 id="tech_4"> 8.4 Version control - Git</h3>
-        <p> This is a common choice for this type of applications, thus we will try to make use of it fully. 
-            GitHub makes it easy to organize our code using commits, that show us the most recent changes.
+        <h3 id="tech_4"> 7.4 Version control - Git</h3>
+        <p> We chose to upload versions of our code on Github because of the possibility to view changes and different versions of the project. This gave us an accurate view of the progress of development for Planty.
+        </p>
+        
+        <h3 id="tech_5"> 7.5 <a href="https://developers.google.com/chart"> Google Charts </a> </h3>
+        <p> In order to make our website more interactive and pleasing, as well as enhance the user's experience, we used pie charts to display data for certain statistics.
+        </p>
+        
+        <h3 id="tech_5"> 7.5 <a href="https://github.com/MrRio/jsPDFJspdf"> JSPDF - Javascript PDF </a> </h3>
+        <p> For the export functionality, we chose to use a Javascript Library that creates PDF files using given data. The files are customizable and the possiblity to add tables helped us.
         </p>
     </section>
     
