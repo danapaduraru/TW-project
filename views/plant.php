@@ -134,7 +134,7 @@ $result = mysqli_query($connection, $query); // Execute query
                         <?php
                             if(isset($_SESSION['login_user'])){ ?>
                                 <a href="#" class="btn btn-primary"
-                                    onclick="triggerPopUp('pop-up-addAlbum','close-addAlbum-form')">
+                                    onclick="triggerPopUp('pop-up-addPlant','close-addPlant-form')">
                                     Add to album
                                 </a>
                             <?php } ?>
@@ -149,11 +149,11 @@ $result = mysqli_query($connection, $query); // Execute query
             </div>
         </div>
 
-        <div id="pop-up-addAlbum" class="pop-up-form">
+        <div id="pop-up-addPlant" class="pop-up-form">
             <div class="pop-up-form-content">
-                <span class="close-addAlbum-form">&times;</span>
+                <span class="close-addPlant-form">&times;</span>
                 <h3> Add a new plant to your albums </h3>
-                <form action="../controllers/add_plant_to_album.php" method="POST" class="form-addAlbum">
+                <form action="../controllers/add_plant_to_album.php" method="POST" class="form-addPlant">
                     <input type="hidden" name="p_plant_id" value="<?php echo htmlspecialchars($row[0]); ?>" /> 
                     <label for="albums">Choose an album:</label>
                     <select style="margin-top: 30px" id="album" name="album">

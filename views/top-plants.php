@@ -1,5 +1,6 @@
 <?php
     require_once('../models/Connection.php');
+    require_once('../controllers/UserController.php');
 
     $connection = Connection::Instance();
                                         
@@ -17,6 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../style/global.css">
     <link rel="stylesheet" href="../style/variables.css">
+    <link rel="stylesheet" href="../style/dashboard.css">
     <link rel="stylesheet" href="../style/top-plants.css">
     <link rel="stylesheet" href="../style/global_responsive.css">
     <link rel="stylesheet" href="../style/statistics.css">
@@ -43,6 +45,39 @@
                 <h1>Planty</h1>
                 <h3>love for plants</h3>
             </div>
+
+            <?php
+            if(isset($_SESSION['login_user']))
+            {
+                ?>
+            <div class="dropdown" id="account">
+                <button class="dropbtn">
+                    <h3><?php 
+                            //select full name from user
+                            $query1 = "SELECT fullname FROM USER WHERE email='" .$_SESSION['login_user']. "';";
+                            $result1 = mysqli_query($connection, $query1);
+                            $nameFound = mysqli_fetch_row($result1)[0];
+                            echo $nameFound; ?>
+
+                        <i class="fa fa-sort-desc fa "></i>
+                    </h3>
+                </button>
+                    <div class="dropdown-content">
+                        <a class="addAlbum" 
+                        onclick="triggerPopUp('pop-up-addAlbum','close-addAlbum-form')">
+                            <font size="2">
+                                <b>Add Album </b>
+                                <i class="fa fa-plus fa-sm"></i>
+                            </font>
+                        </a>
+                        <!-- <a href="album.html" class="addAlbum" ><font size="2"><b>My Albums </b><i class="fa fa-folder-open fa-xs"></font></i></a> -->
+                        <button class="logoutbtn" onclick="location.href= '../controllers/logout.php'" type="button">
+                            <b>Logout </b> 
+                            <i class="fa fa-sign-out fa-sm "></i>
+                        </button>
+                    </div>
+            </div> 
+            <?php } ?>
         </header>
 
         <!-- WELCOME SECTION -->
@@ -75,6 +110,24 @@
                     <img src="images/rss-feed-icon.png" style="width: 40px;">
                     </a>
                 </div>
+            </div>
+        </div>
+        <div id="pop-up-addAlbum" class="pop-up-form">
+            <div class="pop-up-form-content">
+                <span class="close-addAlbum-form">&times;</span>
+                <h3> Add a new album to your list </h3>
+                <form action="../controllers/add_album.php" method="POST" class="form-addAlbum">
+                    <input class="input-form" type="text" placeholder="Name*"
+                    name="a_name"
+                    required>
+                    <input class="input-form" type="text" placeholder="Short description*"
+                    name="a_description"
+                    required>
+                    <button type="submit" class="btn btn-form btn-primary"
+                    name="a_submit">
+                        Add Album
+                    </button>
+                </form>
             </div>
         </div>
     </div>
