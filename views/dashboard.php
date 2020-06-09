@@ -179,6 +179,7 @@
                 }
                 ?>
             </div>
+            </div>
 
         <!-- Pop up Add Album FORM -->
         <div id="pop-up-addAlbum" class="pop-up-form">

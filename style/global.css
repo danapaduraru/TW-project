@@ -323,7 +323,7 @@ Buttons for register and login forms
 CLOSE BUTTONS for forms
 *********************/
   
-.close-register-form, .close-login-form, .close-addAlbum-form, .close-deleteAlbum-form {
+.close-register-form, .close-login-form, .close-addAlbum-form, .close-deleteAlbum-form, .close-deletePlant-form {
     color: #aaa;
     float: right;
     font-size: 28px;
@@ -346,6 +346,13 @@ CLOSE BUTTONS for forms
     text-decoration: none;
     cursor: pointer;
 }
+.close-deletePlant-form:hover,
+.close-deletePlant-form:focus{
+    color: var(--black-text);
+    text-decoration: none;
+    cursor: pointer;
+}
+
 
 
 /* de pe w3 school de la sidebar: */

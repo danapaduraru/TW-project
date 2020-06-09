@@ -66,6 +66,10 @@ $result = mysqli_query($connection, $query); // Execute query
                 <h1>Planty</h1>
                 <h3>love for plants</h3>
             </div>
+            <?php
+            if(isset($_SESSION['login_user']))
+            {
+                ?>
             <div class="dropdown" id="account">
                 <button class="dropbtn">
                     <h3><?php 
@@ -92,7 +96,8 @@ $result = mysqli_query($connection, $query); // Execute query
                             <i class="fa fa-sign-out fa-sm "></i>
                         </button>
                     </div>
-            </div>  
+            </div> 
+            <?php } ?>
         </header>
 
         <!-- GRAY SECTION -->
@@ -126,10 +131,13 @@ $result = mysqli_query($connection, $query); // Execute query
                             <td><em> <?php echo $row[4] ?> </em></td>
                         </tr>
                         </table>
-                        <a href="#" class="btn btn-primary"
-                            onclick="triggerPopUp('pop-up-addAlbum','close-addAlbum-form')">
-                            Add to album
-                        </a>
+                        <?php
+                            if(isset($_SESSION['login_user'])){ ?>
+                                <a href="#" class="btn btn-primary"
+                                    onclick="triggerPopUp('pop-up-addAlbum','close-addAlbum-form')">
+                                    Add to album
+                                </a>
+                            <?php } ?>
                 </div>
                     <?php
                     echo '<img src="data:image/jpeg;base64,'.base64_encode( $row[6] ).'"/>';
