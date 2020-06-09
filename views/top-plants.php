@@ -107,7 +107,7 @@
                 
                 <div style="margin: 2em;"> 
                     <a href="./rsstop.php" style="color: var(--light-accent);"> RSS Feed
-                    <img src="images/rss-feed-icon.png" style="width: 40px;">
+                    <img src="images/rss-feed-icon.png" style="width: 40px;" alt="rss">
                     </a>
                 </div>
             </div>

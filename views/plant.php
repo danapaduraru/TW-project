@@ -153,7 +153,7 @@ $result = mysqli_query($connection, $query); // Execute query
             <div class="pop-up-form-content">
                 <span class="close-addPlant-form">&times;</span>
                 <h3> Add a new plant to your albums </h3>
-                <form action="../controllers/add_plant_to_album.php" method="POST" class="form-addPlant">
+                <form action="../controllers/PlantController.php" method="POST" class="form-addPlant">
                     <input type="hidden" name="p_plant_id" value="<?php echo htmlspecialchars($row[0]); ?>" /> 
                     <label for="albums">Choose an album:</label>
                     <select style="margin-top: 30px" id="album" name="album">

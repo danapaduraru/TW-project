@@ -79,7 +79,7 @@
                         </div>
                     </div>
                 </div>
-                <img src="images/home-gray-paragraph.jpg">
+                <img src="images/home-gray-paragraph.jpg" alt="home">
             </div>
         </div>
 
