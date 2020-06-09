@@ -1,6 +1,6 @@
 <?php
 require_once('../models/User.php');
-require_once('../controllers/login.php');
+require_once('../controllers/UserController.php');
 $connection = Connection::Instance();
 
 // Select Database

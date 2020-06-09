@@ -1,6 +1,6 @@
 <?php 
     require_once('../models/User.php');
-    require_once('../controllers/login.php');
+    require_once('../controllers/UserController.php');
     $connection = Connection::Instance();
                                         
     // Select Database
@@ -95,9 +95,9 @@
                                 echo "<span class=\"close-deleteAlbum-form\">&times;</span>";
                                 echo "<h3> Are you sure that you want to delete this album? </h3>";
                                 echo "<form action=\"../controllers/delete_album.php\" method=\"POST\" class=\"form-deleteAlbum\">";
-                                    echo "<input type=\"hidden\" name=\"album_id\" value=\"<?php echo htmlspecialchars($row[0]); ?>\" />";
+                                    echo "<input type=\"hidden\" name=\"album_id_del\" value=\"<?php echo htmlspecialchars($row[0]); ?>\" />";
                                         echo "<button type=\"submit\" class=\"btn btn-form btn-primary\"";
-                                                echo "name=\"a_submit\">";
+                                                echo "name=\"a_submit_del\">";
                                                 echo "Delete album";
                                         echo "</button>";
                                 echo "</form>";

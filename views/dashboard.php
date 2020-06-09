@@ -1,5 +1,5 @@
 <?php 
-    require_once('../controllers/login.php');
+    require_once('../controllers/UserController.php');
     require_once('../controllers/get_recommendations.php');
 
     $connection = Connection::Instance();
