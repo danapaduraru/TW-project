@@ -124,7 +124,7 @@ $result_location = mysqli_query($connection, $query_location);
         <div class="stats-container">
             <div style="margin: 2em;"> <span> <b> Click to export this data as </b> </span> 
             <input id="save-pdf" type="button" value="PDF" disabled/> <span> <b> or </b> </span>
-            <form action="../controllers/export_csv.php" method="post" style="display:inline;">
+            <form action="../controllers/ExportCSVController.php" method="post" style="display:inline;">
                 <input id="save-csv" type="submit" value="CSV"  name="save-csv"/>
             </form>
             </div>

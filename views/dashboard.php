@@ -1,6 +1,6 @@
 <?php 
     require_once('../controllers/UserController.php');
-    require_once('../controllers/get_recommendations.php');
+    require_once('../controllers/RecommendationsController.php');
 
     $connection = Connection::Instance();
                                         
@@ -191,7 +191,7 @@
             <div class="pop-up-form-content">
                 <span class="close-addAlbum-form">&times;</span>
                 <h3> Add a new album to your list </h3>
-                <form action="../controllers/add_album.php" method="POST" class="form-addAlbum">
+                <form action="../controllers/AlbumController.php" method="POST" class="form-addAlbum">
                     <input class="input-form" type="text" placeholder="Name*"
                     name="a_name"
                     required>
