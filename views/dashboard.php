@@ -1,5 +1,5 @@
 <?php 
-    require_once('../controllers/login.php');
+    require_once('../controllers/UserController.php');
     require_once('../controllers/get_recommendations.php');
 
     $connection = Connection::Instance();
@@ -143,6 +143,11 @@
         <!-- RECOMMENDATIONS SECTION -->
         <div class="gray-section">
             <h2> Recommendations </h2>
+            <?php
+                if ($recommendations_message) {
+                    echo $recommendations_message;
+                }
+            ?>
             <div class="album">
                 <?php
                 foreach($recommendations as $album_id) {

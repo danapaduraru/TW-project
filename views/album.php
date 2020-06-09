@@ -1,6 +1,6 @@
 <?php 
     require_once('../models/User.php');
-    require_once('../controllers/login.php');
+    require_once('../controllers/UserController.php');
     $connection = Connection::Instance();
                                         
     // Select Database
@@ -70,14 +70,14 @@
             <?php
                 if($result && mysqli_num_rows($result)) {
                  // daca exista albumul cu acest ID afisam si descrierea
-                echo $row[2], "<br>";
+                echo $row[2], "<br><br>";
                 }
         
                     //select full name from user
                     $query = "SELECT u.fullname FROM USER u JOIN album a ON u.id=a.user_id WHERE a.id='" .$ida. "';";
                     $result = mysqli_query($connection, $query);
                     $full_name = mysqli_fetch_row($result)[0];
-                    echo " Made by: ", $full_name; 
+                    echo " Created by ", $full_name; 
                 ?>
 
                 <?php 

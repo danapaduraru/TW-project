@@ -1,6 +1,6 @@
 <?php
 require_once('Connection.php');
-require_once('../controllers/login.php');
+require_once('../controllers/UserController.php');
 
 class Album{
     private $id;
@@ -80,10 +80,10 @@ class Delete extends Album{
 
         echo mysqli_error($connection);
 
-        if (isset($_POST['a_submit'])) {
-            if(isset($_POST['album_id'])){
+        if (isset($_POST['a_submit_del'])) {
+            if(isset($_POST['album_id_del'])){
 
-                $ida = $_POST['album_id'];
+                $ida = $_POST['album_id_del'];
 
                 //delete album from database
                 $query = "DELETE FROM plant_album WHERE id_album='". $ida ."';";
