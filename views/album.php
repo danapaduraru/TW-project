@@ -127,10 +127,10 @@
                                 <div class="pop-up-form-content">
                                     <span class="close-deleteAlbum-form">&times;</span>
                                     <h3> Are you sure that you want to delete this album? </h3>
-                                    <form action="../controllers/delete_album.php" method="POST" class="form-deleteAlbum">
-                                        <input type="hidden" name="album_id" value="<?php echo htmlspecialchars($row[0]); ?>" />
+                                    <form action="../controllers/AlbumController.php" method="POST" class="form-deleteAlbum">
+                                        <input type="hidden" name="album_id_del" value="<?php echo htmlspecialchars($row[0]); ?>" />
                                             <button type="submit" class="btn btn-form btn-primary"
-                                                    name="a_submit">
+                                                    name="a_submit_del">
                                                     Delete album
                                             </button>
                                     </form>
@@ -144,7 +144,7 @@
                                 <div class="pop-up-form-content">
                                     <span class="close-deletePlant-form">&times;</span>
                                     <h3> Delete a plant from your album </h3>
-                                    <form action="../controllers/delete_plant.php" method="POST" class="form-deletePlant">
+                                    <form action="../controllers/PlantController.php" method="POST" class="form-deletePlant">
                                         <input type="hidden" name="a_album_id" value="<?php echo htmlspecialchars($row[0]); ?>" /> 
                                         <label for="plants">Choose a plant:</label>
                                         <select style="margin-top: 30px" id="plant" name="plant">
@@ -162,7 +162,7 @@
                                                 ?>
                                         </select>
                                         <button type="submit" class="btn btn-form btn-primary"
-                                        name="pl_submit">
+                                        name="p_submit_del">
                                         Delete plant
                                         </button>
                                     </form>

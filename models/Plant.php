@@ -90,38 +90,34 @@ class Delete extends Plant{
     }
 
     public function deletePlant(): bool{
-
         
         $connection = Connection::Instance();
-        
+
         // Select Database
         mysqli_select_db($connection, 'planty');
 
         echo mysqli_error($connection);
 
-        if (isset($_POST['pl_submit'])) {
-			if(isset($_POST['plant'])){
-	
-			// Add plant to album
-			$plant = $_POST['plant'];
-			$id = $_POST['a_album_id'];
-	
-			$query1 = "SELECT id FROM plant WHERE name='" . $plant  ."';";
-			$result = mysqli_query($connection, $query1);
-			$idp = mysqli_fetch_row($result)[0];
-				
-			$query = "DELETE FROM plant_album WHERE id_album=" . $id . " AND id_plant=" . $idp . ";";
+        if (isset($_POST['p_submit_del'])) {
+            if(isset($_POST['plant'])) {
+                $plant = $_POST['plant'];
+                $id = $_POST['a_album_id'];
 
-			if(!($result = mysqli_query($connection, $query))){
-				throw new Exception("Error: not deleted");
-			}
-			else{
+                $query1 = "SELECT id FROM plant WHERE name='" . $plant  ."';";
+                $result = mysqli_query($connection, $query1);
+                $idp = mysqli_fetch_row($result)[0];
 
-					return true;
-				} 
-        	}
-    	}
-	}
+                $query = "DELETE FROM plant_album WHERE id_album=" . $id . " AND id_plant=" . $idp . ";";
+
+                if(!($result = mysqli_query($connection, $query))){
+                    throw new Exception("Error: not deleted");
+                }
+                else {
+                    return true;
+                } 
+            }
+        }	
+    }
 }
 
 ?>
