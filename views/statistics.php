@@ -251,8 +251,8 @@ $result_location = mysqli_query($connection, $query_location);
         stats_pdf.text(20, 70, 'Comprehensive albums');
         stats_pdf.autoTable({html:'#albums-table', theme: 'grid', startY: 80});
         
-        stats_pdf.text(20, 130, 'Top album creators');
-        stats_pdf.autoTable({html:'#creators-table', theme: 'grid', startY: 140});
+        stats_pdf.text(20, 170, 'Top album creators');
+        stats_pdf.autoTable({html:'#creators-table', theme: 'grid', startY: 180});
         
         btn_save_pdf.addEventListener('click', function () {
             stats_pdf.save('statistics.pdf');
