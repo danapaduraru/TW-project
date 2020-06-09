@@ -88,7 +88,7 @@
             <div class="pop-up-form-content">
                 <span class="close-register-form">&times;</span>
                 <h2> Register with a new account </h2>
-                <form action="../controllers/register.php" method="post" class="form-login-register">
+                <form action="../controllers/UserController.php" method="post" class="form-login-register">
                     <input class="input-form" type="text" placeholder="Full Name*" 
                            name="r_fullname"
                            required>
@@ -111,7 +111,7 @@
             <div class="pop-up-form-content">
                 <span class="close-login-form">&times;</span>
                 <h2> Login with existing account </h2>
-                <form action="../controllers/login.php" method="POST" class="form-login-register">
+                <form action="../controllers/UserController.php" method="POST" class="form-login-register">
                     <input class="input-form" type="text" placeholder="Email*"
                             name = "l_email"
                     required>
