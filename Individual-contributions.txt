@@ -1,0 +1,43 @@
+FRONTEND
+====================
+Paduraru Dana
+HTML & CSS Pages
+	- plant
+	- search-plant
+	- index
+	- album
+Scholarly HTML
+
+Georgescu Florin
+HTML & CSS Pages
+	- dashboard
+	- rsstop
+	- statistics
+	- top-plants
+	- error
+Responsiveness
+
+
+BACKEND
+====================
+Paduraru Dana
+Models:
+	- Connection
+	- Plant
+Controllers:
+	- Export CSV/PDF (JS functions for Google Charts)
+	- Generate recommendations
+	- Plant (addPlant)
+Database:
+	- populate_database script
+
+Georgescu Florin
+Models:
+	- User
+	- Album
+Controllers:
+	- AlbumController (addAlbum, deleteAlbum)
+	- UserController (login, logout, session management)
+	- PlantController (deletePlant)
+Database:
+	- create_tables and delete_tables scripts
