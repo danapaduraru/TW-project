@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home | Planty</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../style/global.css">
+    <link rel="stylesheet" href="../style/variables.css">
+    <link rel="stylesheet" href="../style/dashboard.css">
+    <link rel="stylesheet" href="../style/album.css">
+
+</head>
+
+<body>
+
+    <aside id="sidenav">
+        <a href="javascript:void(0)" id="nav-close-btn" onclick="closeNav()">&times;</a>
+        <a href="./index.html">Home</a>
+        <a href="./top-plants.html">Top Plants</a>
+        <a href="statistics.html">Statistics</a>
+    </aside>
+
+    <div id="main-container">
+        <!-- HEADER -->
+        <header>
+            <div id="menu-title-sidebar" onclick="openNav()">
+                <span style="font-size: 30px;">&#9776; </span>
+            </div>
+            <div id="title-logo">
+                <h1>Planty</h1>
+                <h3>love for plants</h3>
+            </div>
+            <div class = "dropdown" id="account">
+                <h3><button class="dropbtn">AccountName <i class="fa fa-sort-desc fa-2x "></i></button></h3>
+                    <div class="dropdown-content">
+                        <a class="addAlbum" onclick="triggerPopUp('pop-up-addAlbum','close-addAlbum-form')"><b>Add Album </b><i class="fa fa-plus fa-xs"></i></a>
+                        <!-- <a href="album.html" class="addAlbum" ><font size="2"><b>My Albums </b><i class="fa fa-folder-open fa-xs"></font></i></a> -->
+                        <h4><button class="logoutbtn">Logout <i class="fa fa-sign-out fa-sm "></i></button></h4>
+                    </div>
+            </div>  
+        </header>
+
+        <!-- WELCOME SECTION -->
+        <div class="gray-section">
+            <div id="div-searchbar">
+                <form action="#">
+                    <input class="input-search" type="text" placeholder="Search for plants... ">
+                    <button type="submit" class="btn-search">
+                        <i class="fa fa-search"></i>
+                    </button>
+    
+                    <div class="checkboxes">
+                        <div style="text-align: left;">
+                            <input type="checkbox" id="class" value="class">
+                            <label for="class">Class</label><br>
+                        </div>
+                        <div style="text-align: left;">
+                            <input type="checkbox" id="order" value="order">
+                            <label for="order">Order</label>
+                        </div>
+                        <div style="text-align: left;">
+                            <input type="checkbox" id="genus" value="genus">
+                            <label for="genus">Genus</label>
+                        </div>
+                        <div style="text-align: left;">
+                            <input type="checkbox" id="collection" value="collection">
+                            <label for="collection">Collection</label><br>
+                        </div>
+                        <div style="text-align: left;">
+                            <input type="checkbox" id="subclass" value="subclass">
+                            <label for="subclass">Subclass</label>
+                        </div>
+                        <div style="text-align: left;">
+                            <input type="checkbox" id="family" value="family">
+                            <label for="family">Family</label>
+                        </div>
+                        <div style="text-align: left;">
+                            <input type="checkbox" id="species" value="species">
+                            <label for="species">Species</label>
+                        </div>
+                        <div style="text-align: left;">
+                            <input type="checkbox" id="id" value="id">
+                            <label for="id">ID</label>
+                        </div>
+                    </div>
+                </form>
+            </div>  
+        </div>
+        
+        <div class = "white-section">
+            <p>salut</p>
+        </div>
+
+        <p>Based on what you have searched before</p>
+
+        <div class = "gray-section">
+            <div class="album">
+                <div class="card">
+                    <img src="./images/plant2.png" alt="Album">
+                    <div>
+                        <h3> <a href="#"> <em>Abies pectinata (Lam.) Lam. & A. DC.</em></a></h3>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./images/plant2.png" alt="Album">
+                    <div>
+                        <h3> <a href="#"> <em>Abies pectinata (Lam.) Lam. & A. DC.</em></a></h3>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./images/plant2.png" alt="Album">
+                    <div>
+                        <h3> <a href="#"> <em>Abies pectinata (Lam.) Lam. & A. DC.</em></a></h3>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./images/plant2.png" alt="Album">
+                    <div>
+                        <h3> <a href="#"> <em>Abies pectinata (Lam.) Lam. & A. DC.</em></a></h3>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="./images/plant2.png" alt="Album">
+                    <div>
+                        <h3> <a href="#"> <em>Abies pectinata (Lam.) Lam. & A. DC.</em></a></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pop up Add Album FORM -->
+        <div id="pop-up-addAlbum" class="pop-up-form">
+            <div class="pop-up-form-content">
+                <span class="close-addAlbum-form">&times;</span>
+                <h2> Add new Album to your list </h2>
+                <form action="#" class="form-addAlbum">
+                    <input class="input-form" type="text" placeholder="Name*" required>
+                    <input class="input-form" type="text" placeholder="Short description*" required>
+                    <button type="submit" class="btn btn-form btn-primary">
+                        Add Album
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- SEARCH BAR -->
+    </div>
+
+    <script src='../js/index.js'></script>
+
+</body>
+
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home | Planty</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../style/global.css">
+    <link rel="stylesheet" href="../style/variables.css">
+</head>
+
+<body>
+
+    <aside id="sidenav">
+        <a href="javascript:void(0)" id="nav-close-btn" onclick="closeNav()">&times;</a>
+        <a href="./index.html">Home</a>
+        <a href="./top-plants.html">Top Plants</a>
+        <a href="#">Statistics</a>
+    </aside>
+
+    <div id="main-container">
+
+        <!-- HEADER -->
+        <header>
+            <div id="menu-title-sidebar" onclick="openNav()">
+                <span style="font-size: 30px;">&#9776; </span>
+                <span id="menu-span"> Menu </span>
+            </div>
+            <div id="title-logo">
+                <h1>Planty</h1>
+                <h3>love for plants</h3>
+            </div>
+        </header>
+
+        <!-- WELCOME SECTION -->
+        <div class="gray-section">
+            <div class="gray-paragraph-with-pic">
+                <div>
+                    <div style="width: 80%;">
+                        <h3> Welcome to Planty, an interesting place to discover new plants and fungi.
+                        </h3>
+                        <h3> Here you can: </h3>
+                        <ul>
+                            <li> keep track of your plant collections </li>
+                            <li> search for plants using multiple filters </li>
+                            <li> see top plants and statistics </li>
+                        </ul>
+                        <div style="margin-top: 30px; margin-left: 30px;">
+                            <a 
+                            class="btn btn-primary" 
+                            style="display: inline-block;"
+                            onclick="triggerPopUp('pop-up-register','close-register-form')">
+                                Register
+                            </a>
+                            <a 
+                            class="btn btn-secondary" 
+                            style="display: inline-block;"
+                            onclick="triggerPopUp('pop-up-login','close-login-form')">
+                                Login
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <img src="images/home-gray-paragraph.jpg" alt="Album">
+            </div>
+        </div>
+
+        <!-- Pop up REGISTER FORM -->
+        <div id="pop-up-register" class="pop-up-form">
+            <div class="pop-up-form-content">
+                <span class="close-register-form">&times;</span>
+                <h2> Register with a new account </h2>
+                <form action="#"  class="form-login-register">
+                    <input class="input-form" type="text" placeholder="Full Name*" required>
+                    <input class="input-form" type="text" placeholder="Email*" required>
+                    <input class="input-form" type="text" placeholder="Password*" required>
+                    <button type="submit" class="btn btn-form btn-primary">
+                        Register
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Pop up LOGIN FORM -->
+        <div id="pop-up-login" class="pop-up-form">
+            <div class="pop-up-form-content">
+                <span class="close-login-form">&times;</span>
+                <h2> Login with existing account </h2>
+                <form action="#" class="form-login-register">
+                    <input class="input-form" type="text" placeholder="Email*" required>
+                    <input class="input-form" type="text" placeholder="Password*" required>
+                    <button type="submit" class="btn btn-form btn-primary">
+                        Login
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- SEARCH BAR -->
+        <div id="div-searchbar">
+            <h2> Discover new plants </h2>
+            <form action="#">
+                <input class="input-search" type="text" placeholder="Search for plants... ">
+                <button type="submit" class="btn-search">
+                    <i class="fa fa-search"></i>
+                </button>
+
+                <div class="checkboxes">
+                    <div style="text-align: left;">
+                        <input type="checkbox" id="class" value="class">
+                        <label for="class">Class</label><br>
+                    </div>
+                    <div style="text-align: left;">
+                        <input type="checkbox" id="order" value="order">
+                        <label for="order">Order</label>
+                    </div>
+                    <div style="text-align: left;">
+                        <input type="checkbox" id="genus" value="genus">
+                        <label for="genus">Genus</label>
+                    </div>
+                    <div style="text-align: left;">
+                        <input type="checkbox" id="collection" value="collection">
+                        <label for="collection">Collection</label><br>
+                    </div>
+                    <div style="text-align: left;">
+                        <input type="checkbox" id="subclass" value="subclass">
+                        <label for="subclass">Subclass</label>
+                    </div>
+                    <div style="text-align: left;">
+                        <input type="checkbox" id="family" value="family">
+                        <label for="family">Family</label>
+                    </div>
+                    <div style="text-align: left;">
+                        <input type="checkbox" id="species" value="species">
+                        <label for="species">Species</label>
+                    </div>
+                    <div style="text-align: left;">
+                        <input type="checkbox" id="id" value="id">
+                        <label for="id">ID</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src='../js/index.js'> </script>
+
+</body>
+
+</html>

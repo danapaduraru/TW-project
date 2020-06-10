@@ -1,0 +1,52 @@
+/********************
+Create gray background
+*********************/
+
+html {
+    background-color: var(--light-gray);
+}
+
+header {
+    background-color: var(--white);
+}
+
+.gray-section {
+    text-align: center;
+    border-bottom: 0;
+}
+
+/********************
+TABLE 
+*********************/
+table {
+    margin: auto;
+    text-align: left;
+    border-collapse: collapse;
+}
+  
+td, th {
+    border: 1px solid #ddd;
+    padding: 12px;
+  }
+
+td a {
+    font-size: 100%;
+    color: var(--dark-text);
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+  
+tr:nth-child(even){background-color: #f2f2f2;}
+  
+tr:hover {background-color: #ddd;}
+  
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-weight: 500;
+    font-size: 110%;
+    background-color: var(--dark-accent);
+    color: var(--white);
+}

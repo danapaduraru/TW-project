@@ -1,0 +1,63 @@
+/********************
+Create gray background
+*********************/
+
+html {
+    background-color: var(light-gray);
+}
+
+header {
+    background-color: var(white);
+}
+
+.gray-section {
+    text-align: center;
+    border-bottom: 0;
+}
+
+.gray-section h2 {
+    margin-bottom: 2em;
+}
+
+/********************
+ALBUM
+*********************/
+.album {
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 25px;
+    margin-bottom: 3em;
+}
+
+/********************
+CARD FROM ALBUM
+*********************/
+.card {
+    background-color: var(--white);
+    border: 1px solid var(--gray-border);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card img {
+    width: 100%;
+    max-height: 300px;
+}
+
+/********************
+Plant title links
+*********************/
+.album a {
+    font-size: 105%;
+    color: var(--dark-accent);
+}
+
+.album a:hover {
+    text-decoration: underline;
+}
+  

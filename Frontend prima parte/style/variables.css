@@ -1,0 +1,18 @@
+/*
+unused colors:
+    --link-hover: #10e9bd;
+    --important: #148972;
+*/
+
+:root {
+    --white: #fff;
+    --light-gray: #f6f8fa;
+    --gray:rgb(73, 73, 73);
+    --black: #24292e;
+    --light-accent: #19af92;
+    --mid-accent: #008080;
+    --dark-accent: #006652;
+    --divider: #ddeeeb;
+    --dark-text: rgb(53, 53, 53);
+    --gray-border: rgb(172, 172, 172);
+}
